@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-barlow), var(--font-cairo), sans-serif;
+  --font-display: var(--font-condensed), var(--font-cairo), sans-serif;
+  --color-ink: #14211c;
+  --color-paper: #f4f0e6;
+  --color-paper-2: #e7e1d4;
+  --color-muted: #5d675f;
+  --color-blue: #163f73;
+  --color-yellow: #f0c91a;
+  --color-magenta: #c2185b;
+  --color-line: #d8d0c2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-cairo), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+
+html[dir="rtl"] .font-display {
+  font-family: var(--font-cairo), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-blue);
+}
+
+html[dir="rtl"] .eyebrow {
+  letter-spacing: 0.04em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.05rem;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-ink {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.btn-yellow {
+  background: var(--color-yellow);
+  color: var(--color-ink);
+}
+
+.btn-line {
+  border-color: currentColor;
+  background: transparent;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  background: white;
+  padding: 0.75rem 0.8rem;
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--color-blue);
+}
+
+.cells {
+  background-image: radial-gradient(circle, rgba(20, 33, 28, 0.16) 1px, transparent 1.15px);
+  background-size: 13px 11px;
+}
+
+::selection {
+  background: #ffe14a;
+  color: #14211c;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
