@@ -12,7 +12,7 @@ export function CylinderDetail({ product }: { product: Product }) {
   const related = products.filter((item) => item.family === product.family && item.slug !== product.slug).slice(0, 3);
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <article className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
       <p className="text-sm text-muted">
         <Link href="/cylinders" className="text-blue">
           {ar ? "الأسطوانات" : "Cylinders"}
@@ -22,7 +22,7 @@ export function CylinderDetail({ product }: { product: Product }) {
       </p>
       <div className="mt-4 grid items-start gap-8 lg:grid-cols-2">
         <div>
-          <h1 className="font-display text-5xl uppercase sm:text-6xl">{product.title[lang]}</h1>
+          <h1 className="font-display text-5xl sm:text-6xl">{product.title[lang]}</h1>
           <p className="mt-5 text-lg leading-8 text-muted">{product.summary[lang]}</p>
           <ul className="mt-6 space-y-3">
             {product.points[lang].map((point) => (
@@ -53,7 +53,7 @@ export function CylinderDetail({ product }: { product: Product }) {
       </div>
 
       <section className="mt-14 border border-line bg-white p-5 sm:p-8">
-        <h2 className="font-display text-4xl uppercase">{ar ? "اطلب هذه الأسطوانة" : "Ask for this cylinder"}</h2>
+        <h2 className="font-display text-4xl">{ar ? "اطلب هذه الأسطوانة" : "Ask for this cylinder"}</h2>
         <p className="mt-2 mb-6 max-w-xl text-sm text-muted">
           {ar
             ? "اذكروا المطبعة وطول التكرار والموعد. نرد على واتساب المصنع."

@@ -9,10 +9,10 @@ export function ContactPage() {
   const ar = lang === "ar";
 
   return (
-    <article className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12">
+    <article className="mx-auto grid max-w-6xl gap-10 px-5 py-8 sm:px-8 sm:py-14 lg:grid-cols-12">
       <div className="lg:col-span-5">
         <p className="eyebrow">{ar ? "تواصل" : "Contact"}</p>
-        <h1 className="font-display mt-3 text-5xl uppercase sm:text-6xl">
+        <h1 className="font-display mt-3 text-5xl sm:text-6xl">
           {ar ? "كلموا المصنع مباشرة." : "Talk to the plant directly."}
         </h1>
         <p className="mt-5 leading-7 text-muted">
@@ -38,7 +38,7 @@ export function ContactPage() {
         </div>
       </div>
       <div className="border border-line bg-white p-5 sm:p-8 lg:col-span-7">
-        <h2 className="font-display text-3xl uppercase">{ar ? "طلب أسطوانة" : "Cylinder enquiry"}</h2>
+        <h2 className="font-display text-3xl">{ar ? "طلب أسطوانة" : "Cylinder enquiry"}</h2>
         <div className="mt-6">
           <EnquiryForm />
         </div>

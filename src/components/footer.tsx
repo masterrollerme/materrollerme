@@ -5,33 +5,61 @@ import { Mark } from "@/components/mark";
 import { company } from "@/lib/company";
 import { useI18n } from "@/lib/i18n";
 
+const explore = {
+  en: [
+    { href: "/cylinders", label: "Cylinders" },
+    { href: "/process", label: "Process" },
+    { href: "/about", label: "About" },
+    { href: "/plant", label: "The plant" },
+    { href: "/contact", label: "Contact" },
+  ],
+  ar: [
+    { href: "/cylinders", label: "الأسطوانات" },
+    { href: "/process", label: "طريقة العمل" },
+    { href: "/about", label: "عن الشركة" },
+    { href: "/plant", label: "المصنع" },
+    { href: "/contact", label: "تواصل" },
+  ],
+};
+
 export function Footer() {
   const { lang } = useI18n();
   const ar = lang === "ar";
 
   return (
-    <footer className="mt-auto bg-ink text-paper">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">
+    <footer className="mt-auto border-t border-line bg-paper">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-3">
-            <Mark />
-            <div>
-              <p className="font-display text-2xl uppercase tracking-wide">Master Roller</p>
-              <p className="text-xs tracking-[0.16em] text-paper/60 uppercase">
-                {ar ? "مصنع أم القيوين" : "Umm Al Quwain plant"}
-              </p>
-            </div>
-          </div>
-          <p className="mt-5 max-w-sm text-sm leading-6 text-paper/75">
+          <Link href="/" className="flex items-center gap-3">
+            <Mark className="h-11 w-11" />
+            <span>
+              <span className="font-display block text-3xl leading-none">Master Roller</span>
+              <span className="mt-1 block text-[0.62rem] tracking-[0.28em] text-muted uppercase">
+                {ar ? "أسطوانات · كروم · بروفة" : "Engrave · Chrome · Proof"}
+              </span>
+            </span>
+          </Link>
+          <p className="mt-6 max-w-sm text-sm leading-7 text-muted">
             {ar
               ? "ماستر برينتنغ بليت إندستري ذ.م.م هي فرع الإمارات لمجموعة ماستر رولر. نحفر أسطوانات الروتوغرافور لطابعات التغليف والديكور."
               : "Master Printing Plate Industry L.L.C. is the UAE plant of Master Roller Group. We engrave rotogravure cylinders for packaging and décor printers."}
           </p>
         </div>
-
         <div className="md:col-span-3">
-          <p className="eyebrow text-yellow">{ar ? "الزيارة" : "Visit"}</p>
-          <address className="mt-3 text-sm leading-6 text-paper/80 not-italic">
+          <p className="eyebrow">{ar ? "تصفح" : "Explore"}</p>
+          <ul className="mt-4 space-y-2 text-sm">
+            {explore[lang].map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-blue">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="md:col-span-4">
+          <p className="eyebrow">{ar ? "المصنع" : "The plant"}</p>
+          <address className="mt-4 text-sm leading-7 not-italic text-muted">
             {ar ? (
               <>
                 قطعة رقم 950، شارع الاتحاد
@@ -48,37 +76,21 @@ export function Footer() {
               ))
             )}
           </address>
-          <a className="mt-3 inline-block text-sm text-yellow" href={company.mapLink}>
-            {ar ? "فتح الخريطة" : "Open the map"}
-          </a>
-        </div>
-
-        <div className="md:col-span-4">
-          <p className="eyebrow text-yellow">{ar ? "الخط المباشر" : "Direct line"}</p>
-          <a className="mt-3 block text-lg" href={`tel:${company.phone}`} dir="ltr">
+          <a className="mt-4 block" href={`tel:${company.phone}`} dir="ltr">
             {company.phoneDisplay}
           </a>
-          <a className="mt-1 block text-sm text-paper/70" href={`tel:${company.phoneAlt}`} dir="ltr">
+          <a className="mt-1 block text-sm text-muted" href={`tel:${company.phoneAlt}`} dir="ltr">
             {company.phoneAltDisplay}
           </a>
-          <a className="btn btn-yellow mt-5" href={company.whatsapp}>
-            WhatsApp
+          <a className="mt-5 inline-block text-sm text-blue" href={company.mapLink}>
+            {ar ? "فتح الخريطة" : "Open the map"} →
           </a>
-          <p className="mt-6 text-xs leading-5 text-paper/55">
-            {ar ? "الشركة الأم" : "Parent company"}:{" "}
-            <a className="underline" href={company.parentSite}>
-              {company.parent}
-            </a>
-          </p>
         </div>
       </div>
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 text-xs text-paper/50 sm:px-6">
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-4 text-xs text-muted sm:px-8">
           <p>© 2026 {company.legal}</p>
-          <div className="flex gap-4">
-            <Link href="/cylinders">{ar ? "الأسطوانات" : "Cylinders"}</Link>
-            <Link href="/contact">{ar ? "تواصل" : "Contact"}</Link>
-          </div>
+          <a href={company.parentSite}>{company.parent}</a>
         </div>
       </div>
     </footer>

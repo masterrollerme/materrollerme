@@ -24,12 +24,12 @@ export const products: Product[] = [
   {
     slug: "rotogravure-cylinders",
     family: "packaging",
-    image: "/images/shop-2.jpg",
-    width: 1200,
-    height: 756,
+    image: "/images/uae/k5.webp",
+    width: 1800,
+    height: 1351,
     imageNote: {
-      en: "Cylinder bases from Master Roller Group production.",
-      ar: "قواعد أسطوانات من إنتاج مجموعة ماستر رولر.",
+      en: "A Hell K5 Smart engraving a copper cylinder.",
+      ar: "ماكينة Hell K5 Smart تحفر أسطوانة نحاسية.",
     },
     title: { en: "Rotogravure cylinders", ar: "أسطوانات الروتوغرافور" },
     summary: {
@@ -58,12 +58,12 @@ export const products: Product[] = [
   {
     slug: "flexible-packaging-rollers",
     family: "packaging",
-    image: "/images/shop-2.jpg",
-    width: 1200,
-    height: 756,
+    image: "/images/uae/proofing.webp",
+    width: 2400,
+    height: 925,
     imageNote: {
-      en: "Cylinder bases prepared for press work.",
-      ar: "قواعد أسطوانات مهيأة للعمل على المطبعة.",
+      en: "Finished cylinders in the proofing area.",
+      ar: "أسطوانات جاهزة في منطقة البروفة.",
     },
     title: { en: "Flexible pack rollers", ar: "أسطوانات التغليف المرن" },
     summary: {
@@ -160,12 +160,12 @@ export const products: Product[] = [
   {
     slug: "embossing-rollers",
     family: "special",
-    image: "/images/wood-2.jpg",
-    width: 600,
-    height: 391,
+    image: "/images/uae/plating.webp",
+    width: 1200,
+    height: 1243,
     imageNote: {
-      en: "Décor surface of the kind these rollers finish.",
-      ar: "سطح ديكور من النوع الذي تشطبه هذه الأسطوانات.",
+      en: "A copper-plated cylinder on the plating line.",
+      ar: "أسطوانة مطلية بالنحاس على خط الطلاء.",
     },
     title: { en: "Embossing rollers", ar: "أسطوانات النقش البارز" },
     summary: {
@@ -194,12 +194,12 @@ export const products: Product[] = [
   {
     slug: "heat-transfer-rollers",
     family: "special",
-    image: "/images/wood-3.jpg",
-    width: 600,
-    height: 391,
+    image: "/images/uae/ink.webp",
+    width: 1800,
+    height: 3368,
     imageNote: {
-      en: "A grain the transfer range is often asked to reproduce.",
-      ar: "عرق يُطلب كثيراً ضمن مجموعة النقل.",
+      en: "An automatic ink-mixing system used with the print work.",
+      ar: "نظام خلط حبر آلي يُستخدم مع أعمال الطباعة.",
     },
     title: { en: "Heat transfer rollers", ar: "أسطوانات النقل الحراري" },
     summary: {
@@ -228,12 +228,12 @@ export const products: Product[] = [
   {
     slug: "ceramic-rollers",
     family: "special",
-    image: "/images/shop-2.jpg",
+    image: "/images/uae/cfm.webp",
     width: 1200,
-    height: 756,
+    height: 803,
     imageNote: {
-      en: "Steel bases from the group. Ceramic and anilox are specified per press.",
-      ar: "قواعد فولاذية من المجموعة. السيراميك والأنيلكس يُحددان حسب المطبعة.",
+      en: "A Daetwyler CFM used in cylinder processing.",
+      ar: "ماكينة Daetwyler CFM تُستخدم في تجهيز الأسطوانات.",
     },
     title: { en: "Ceramic and anilox rollers", ar: "أسطوانات سيراميك وأنيلكس" },
     summary: {
@@ -262,12 +262,12 @@ export const products: Product[] = [
   {
     slug: "security-cylinders",
     family: "special",
-    image: "/images/shop-2.jpg",
-    width: 1200,
-    height: 756,
+    image: "/images/uae/security.webp",
+    width: 480,
+    height: 536,
     imageNote: {
-      en: "Cylinder bases. Security artwork is confirmed on the proof.",
-      ar: "قواعد أسطوانات. يُؤكد الرسم الأمني على البروفة.",
+      en: "A laser-engraved guilloche security pattern.",
+      ar: "نقشة أمنية محفورة بالليزر.",
     },
     title: { en: "Anti-counterfeit cylinders", ar: "أسطوانات مكافحة التقليد" },
     summary: {

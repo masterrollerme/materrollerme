@@ -29,9 +29,9 @@ export function ProcessPage() {
   const ar = lang === "ar";
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    <article className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
       <p className="eyebrow">{ar ? "طريقة العمل" : "How a cylinder moves"}</p>
-      <h1 className="font-display mt-3 max-w-3xl text-5xl uppercase sm:text-6xl">
+      <h1 className="font-display mt-3 max-w-3xl text-5xl sm:text-6xl">
         {ar ? "من ملف التصميم إلى بروفة يمكن توقيعها." : "From a design file to a proof you can sign."}
       </h1>
       <p className="mt-5 max-w-2xl leading-7 text-muted">

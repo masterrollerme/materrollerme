@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mark } from "@/components/mark";
-import { company } from "@/lib/company";
 import { useI18n, type Lang } from "@/lib/i18n";
 
 const links = {
@@ -12,14 +11,14 @@ const links = {
     { href: "/about", label: "About" },
     { href: "/cylinders", label: "Cylinders" },
     { href: "/process", label: "Process" },
-    { href: "/plant", label: "Umm Al Quwain" },
+    { href: "/plant", label: "Plant" },
     { href: "/contact", label: "Contact" },
   ],
   ar: [
     { href: "/about", label: "عن الشركة" },
     { href: "/cylinders", label: "الأسطوانات" },
     { href: "/process", label: "طريقة العمل" },
-    { href: "/plant", label: "أم القيوين" },
+    { href: "/plant", label: "المصنع" },
     { href: "/contact", label: "تواصل" },
   ],
 };
@@ -27,34 +26,50 @@ const links = {
 export function Header() {
   const { lang, setLang } = useI18n();
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const items = links[lang];
-  const cta = lang === "ar" ? "اطلب أسطوانة" : "Request a cylinder";
+  const onHero = pathname === "/" && !scrolled;
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <Mark />
-          <span className="min-w-0 leading-tight">
-            <span className="block font-display text-[1.35rem] uppercase tracking-wide text-ink">
-              Master Roller
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        onHero ? "text-paper" : "border-b border-line bg-paper/95 text-ink backdrop-blur-md"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-8 lg:flex-row lg:items-center lg:gap-6">
+        <div className="flex items-center justify-between gap-3">
+          <Link href="/" className="flex min-w-0 items-center gap-2.5">
+            <Mark className="h-9 w-9 shrink-0" />
+            <span className="min-w-0 leading-none">
+              <span className="font-display block text-[1.35rem] sm:text-[1.7rem]">Master Roller</span>
+              <span className={`block text-[0.58rem] tracking-[0.18em] uppercase ${onHero ? "text-paper/70" : "text-muted"}`}>
+                {lang === "ar" ? "أم القيوين" : "Umm Al Quwain"}
+              </span>
             </span>
-            <span className="block text-xs tracking-[0.14em] text-muted uppercase">
-              {lang === "ar" ? "أم القيوين" : "Umm Al Quwain"}
-            </span>
-          </span>
-        </Link>
+          </Link>
+          <div className="lg:hidden">
+            <LangSwitch lang={lang} setLang={setLang} light={onHero} />
+          </div>
+        </div>
 
-        <nav className="ms-auto hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="flex flex-wrap items-center gap-x-4 gap-y-1 text-start text-[0.72rem] tracking-[0.08em] uppercase sm:text-[0.78rem] lg:flex-1 lg:justify-center lg:gap-x-5 lg:text-[0.82rem] lg:tracking-[0.12em]" aria-label="Primary">
           {items.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-3 py-2 text-sm ${active ? "text-ink" : "text-muted hover:text-ink"}`}
                 aria-current={active ? "page" : undefined}
+                className={`border-b py-1.5 transition-colors ${
+                  active ? "border-current" : "border-transparent opacity-80 hover:opacity-100"
+                }`}
               >
                 {item.label}
               </Link>
@@ -62,57 +77,23 @@ export function Header() {
           })}
         </nav>
 
-        <div className="ms-auto flex items-center gap-2 lg:ms-2">
-          <LangSwitch lang={lang} setLang={setLang} />
-          <Link href="/contact" className="btn btn-ink hidden sm:inline-flex">
-            {cta}
-          </Link>
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center border border-ink/15 lg:hidden"
-            aria-expanded={open}
-            aria-label={lang === "ar" ? "القائمة" : "Menu"}
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span className="flex w-5 flex-col gap-1.5">
-              <span className="h-px bg-ink" />
-              <span className="h-px bg-ink" />
-              <span className="h-px bg-ink" />
-            </span>
-          </button>
+        <div className="hidden lg:block">
+          <LangSwitch lang={lang} setLang={setLang} light={onHero} />
         </div>
       </div>
-
-      {open && (
-        <nav className="border-t border-ink/10 bg-paper px-4 py-3 lg:hidden" aria-label="Mobile">
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block border-b border-ink/10 py-3 text-lg"
-              onClick={() => setOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <a className="mt-3 block text-sm text-blue" href={`tel:${company.phone}`} dir="ltr">
-            {company.phoneDisplay}
-          </a>
-        </nav>
-      )}
     </header>
   );
 }
 
-function LangSwitch({ lang, setLang }: { lang: Lang; setLang: (lang: Lang) => void }) {
+function LangSwitch({ lang, setLang, light }: { lang: Lang; setLang: (lang: Lang) => void; light: boolean }) {
   return (
-    <div className="flex border border-ink/15 text-xs tracking-wide" role="group" aria-label="Language">
+    <div className={`flex shrink-0 text-[0.68rem] tracking-[0.14em] ${light ? "text-paper" : "text-ink"}`} role="group" aria-label="Language">
       {(["en", "ar"] as const).map((code) => (
         <button
           key={code}
           type="button"
           onClick={() => setLang(code)}
-          className={`px-2.5 py-2 ${lang === code ? "bg-ink text-paper" : "text-muted"}`}
+          className={`px-1.5 py-2 ${lang === code ? "opacity-100" : "opacity-45"}`}
           aria-pressed={lang === code}
         >
           {code === "en" ? "EN" : "عربي"}

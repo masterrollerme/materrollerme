@@ -7,9 +7,9 @@ export default function NotFound() {
   const { lang } = useI18n();
   const ar = lang === "ar";
   return (
-    <div className="mx-auto max-w-3xl px-4 py-24 sm:px-6">
+    <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
       <p className="eyebrow">404</p>
-      <h1 className="font-display mt-3 text-5xl uppercase">
+      <h1 className="font-display mt-3 text-5xl">
         {ar ? "هذه الصفحة غير موجودة." : "That page is not on this site."}
       </h1>
       <Link href="/" className="btn btn-ink mt-8">

@@ -13,9 +13,9 @@ export function AboutPage() {
   const ar = lang === "ar";
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    <article className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
       <p className="eyebrow">{ar ? "المجموعة" : "The group"}</p>
-      <h1 className="font-display mt-3 max-w-3xl text-5xl uppercase sm:text-6xl">
+      <h1 className="font-display mt-3 max-w-3xl text-5xl sm:text-6xl">
         {ar ? "صانع أسطوانات منذ 2009، ومصنع في أم القيوين." : "Cylinder makers since 2009, with a plant in Umm Al Quwain."}
       </h1>
       <div className="mt-8 grid gap-10 lg:grid-cols-12">
@@ -36,11 +36,11 @@ export function AboutPage() {
               : "The wider range — wood and marble texture, embossing, ceramic, heat transfer and security cylinders — belongs to the group catalogue, and is coordinated for Middle East and Africa customers from this branch."}
           </p>
         </div>
-        <aside className="bg-blue p-6 text-paper lg:col-span-5">
-          <p className="eyebrow text-yellow">{ar ? "مبدأ المجموعة" : "Group principle"}</p>
+        <aside className="bg-field p-6 text-ink lg:col-span-5">
+          <p className="eyebrow">{ar ? "مبدأ المجموعة" : "Group principle"}</p>
           <ul className="mt-4 space-y-2 text-lg">
             {principles[lang].map((item) => (
-              <li key={item} className="border-b border-white/15 py-2">
+              <li key={item} className="border-b border-line py-2">
                 {item}
               </li>
             ))}
@@ -70,7 +70,7 @@ export function AboutPage() {
           },
         ].map((item) => (
           <div key={item.title}>
-            <h2 className="font-display text-3xl uppercase">{item.title}</h2>
+            <h2 className="font-display text-3xl">{item.title}</h2>
             <p className="mt-3 text-sm leading-6 text-muted">{item.body}</p>
           </div>
         ))}

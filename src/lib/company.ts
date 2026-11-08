@@ -1,3 +1,6 @@
+/** Set NEXT_PUBLIC_SITE_URL to the live domain before launch so canonicals, Open Graph and the sitemap use it. */
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3456").replace(/\/$/, "");
+
 export const company = {
   brand: "Master Roller",
   legal: "Master Printing Plate Industry L.L.C",

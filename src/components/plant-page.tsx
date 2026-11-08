@@ -10,9 +10,9 @@ export function PlantPage() {
 
   return (
     <article>
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+      <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
         <p className="eyebrow">{ar ? "أم القيوين" : "Umm Al Quwain"}</p>
-        <h1 className="font-display mt-3 max-w-3xl text-5xl uppercase sm:text-6xl">
+        <h1 className="font-display mt-3 max-w-3xl text-5xl sm:text-6xl">
           {ar ? "المصنع على شارع الاتحاد." : "The plant on Al Itehaad Street."}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
@@ -71,10 +71,10 @@ export function PlantPage() {
       </div>
 
       <section className="border-y border-line bg-paper-2">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-8 sm:px-8 sm:py-14 lg:grid-cols-2">
           <div>
             <p className="eyebrow">{ar ? "الحرم الجديد" : "The new campus"}</p>
-            <h2 className="font-display mt-3 text-4xl uppercase">
+            <h2 className="font-display mt-3 text-4xl">
               {ar ? "5331 متراً مربعاً قيد الإنشاء." : "5,331 square metres, under construction."}
             </h2>
             <p className="mt-4 leading-7 text-muted">
@@ -85,40 +85,43 @@ export function PlantPage() {
           </div>
           <figure>
             <Image
-              src="/images/hero-plant.jpg"
-              alt={ar ? "مبنى مصنع تابع لمجموعة ماستر رولر" : "A Master Roller Group factory building"}
-              width={1440}
-              height={594}
+              src="/images/uae/factory.webp"
+              alt={ar ? "رسم لمبنى ماستر برينتنغ بليت إندستري في أم القيوين" : "Rendering of the planned Master Printing Plate Industry building in Umm Al Quwain"}
+              width={1200}
+              height={425}
               className="h-auto w-full object-cover"
             />
             <figcaption className="mt-2 text-xs leading-5 text-muted">
               {ar
-                ? "صورة من منشآت المجموعة، لا من ورشة أم القيوين. نضعها هنا لأن موقع المجموعة هو مصدر صور المصنع المتاح حالياً."
-                : "A group facility, not the Umm Al Quwain workshop. It is shown because the group website is the factory photography available today."}
+                ? "رسم للمبنى المخطط، لا صورة لمصنع مكتمل. البناء ما زال جارياً."
+                : "A rendering of the planned building, not a photograph of a finished plant. Construction is still under way."}
             </figcaption>
           </figure>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <h2 className="font-display text-4xl uppercase">{ar ? "على أرض المصنع" : "On the floor"}</h2>
+      <section className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
+        <h2 className="font-display text-4xl">{ar ? "على أرض المصنع" : "On the floor"}</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {(ar
             ? [
-                ["ما قبل الطباعة", "مراجعة الملفات والفصل قبل الحفر، بما في ذلك العمل على إليستريتور وفوتوشوب."],
-                ["الأسطوانة", "خراطة مبرمجة، تجهيز الأنبوب، والحفر، ثم طلاء الكروم."],
-                ["البروفة", "مشغّل بروفة يتحقق من الأسطوانة قبل أن تغادر إلى المطبعة."],
+                ["/images/uae/colour.webp", "1200", "1805", "ما قبل الطباعة", "مراجعة الملفات والفصل قبل الحفر، بما في ذلك إدارة اللون."],
+                ["/images/uae/cnc.webp", "1200", "1742", "الأسطوانة", "تقطيع الأنبوب، الخراطة، ثم الحفر والطلاء."],
+                ["/images/uae/qc.webp", "1200", "1048", "البروفة", "فريق الجودة يراجع البروفة قبل أن تغادر الأسطوانة."],
               ]
             : [
-                ["Prepress", "File review and separation before engraving, including Illustrator and Photoshop work."],
-                ["The cylinder", "CNC turning, tube preparation and engraving, then chrome."],
-                ["The proof", "A proofing operator checks the cylinder before it leaves for the press."],
+                ["/images/uae/colour.webp", "1200", "1805", "Prepress", "File review and separation before engraving, including colour management."],
+                ["/images/uae/cnc.webp", "1200", "1742", "The cylinder", "The tube is cut to length, then turned, engraved and plated."],
+                ["/images/uae/qc.webp", "1200", "1048", "The proof", "The quality team checks the proof before the cylinder leaves."],
               ]
-          ).map(([title, body]) => (
-            <div key={title} className="border border-line p-5">
-              <h3 className="text-xl">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
-            </div>
+          ).map(([src, width, height, title, body]) => (
+            <figure key={title} className="border border-line bg-paper">
+              <Image src={src} alt={title} width={Number(width)} height={Number(height)} className="aspect-[4/3] w-full object-cover" />
+              <figcaption className="p-5">
+                <h3 className="text-xl">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>

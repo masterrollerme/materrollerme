@@ -20,9 +20,9 @@ export function CylindersPage() {
   };
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    <article className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
       <p className="eyebrow">{ar ? "التشكيلة" : "Range"}</p>
-      <h1 className="font-display mt-3 max-w-3xl text-5xl uppercase sm:text-6xl">
+      <h1 className="font-display mt-3 max-w-3xl text-5xl sm:text-6xl">
         {ar ? "أسطوانات التغليف والديكور والخاصة." : "Packaging, décor and special cylinders."}
       </h1>
       <p className="mt-5 max-w-2xl leading-7 text-muted">
@@ -57,7 +57,7 @@ export function CylindersPage() {
             />
             <div className="p-5">
               <p className="text-xs tracking-[0.14em] text-blue uppercase">{familyLabel[product.family][lang]}</p>
-              <h2 className="font-display mt-2 text-3xl uppercase group-hover:text-blue">{product.title[lang]}</h2>
+              <h2 className="font-display mt-2 text-3xl group-hover:text-blue">{product.title[lang]}</h2>
               <p className="mt-2 text-sm leading-6 text-muted">{product.summary[lang]}</p>
             </div>
           </Link>
