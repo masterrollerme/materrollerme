@@ -1,13 +1,24 @@
-import type { Metadata } from "next";
 import { AboutPage } from "@/components/about-page";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "About the Umm Al Quwain plant",
   description:
-    "Master Roller Group has made rotogravure cylinders since 2009. The UAE company is Master Printing Plate Industry L.L.C. in Umm Deara, Umm Al Quwain.",
-  alternates: { canonical: "/about" },
-};
+    "Master Printing Plate Industry L.L.C. was established in Umm Al Quwain in September 2023, part of Master Roller Group, making gravure cylinders since 2009.",
+  path: "/about",
+});
 
 export default function Page() {
-  return <AboutPage />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
+      <AboutPage />
+    </>
+  );
 }

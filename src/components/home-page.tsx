@@ -3,17 +3,36 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { company } from "@/lib/company";
+import { company, markets } from "@/lib/company";
+import { faqs } from "@/lib/faq";
 import { useI18n } from "@/lib/i18n";
 import { products } from "@/lib/products";
 
-const surfaces = [
-  { src: "/images/uae/decor.webp", en: "Wood and marble décor", ar: "ديكور خشب ورخام" },
-  { src: "/images/wood-1.jpg", en: "Wood grain", ar: "عرق خشب" },
-  { src: "/images/marble-1.jpg", en: "White marble", ar: "رخام أبيض" },
-  { src: "/images/uae/security.webp", en: "Security pattern", ar: "نقشة أمنية" },
-  { src: "/images/wood-2.jpg", en: "Warm oak", ar: "سنديان" },
-  { src: "/images/marble-2.jpg", en: "Stone vein", ar: "عرق حجر" },
+const capabilities = [
+  {
+    en: ["IT6", "CNC turning", "Roundness about 0.0025 mm. Surface roughness Ra 0.8–1.6 μm."],
+    ar: ["IT6", "خراطة مبرمجة", "استدارة نحو 0.0025 مم. خشونة سطح Ra 0.8–1.6 ميكرومتر."],
+  },
+  {
+    en: ["1.7 m", "Copper and chrome", "Full-auto tanks plate one gravure cylinder at a time."],
+    ar: ["1.7 م", "نحاس وكروم", "أحواض آلية كاملة تطلي أسطوانة حفر واحدة في كل مرة."],
+  },
+  {
+    en: ["4", "HELL K5 engravers", "Two K5 Smart XL and two K5 Smart, with HD Gravure and CellEye."],
+    ar: ["4", "آلات حفر HELL K5", "آلتان K5 Smart XL وآلتان K5 Smart، مع HD Gravure وCellEye."],
+  },
+  {
+    en: ["540", "lines / cm", "HelioXtreme 32+ for logos, barcodes, microtext and fine packs."],
+    ar: ["540", "خطاً / سم", "HelioXtreme 32+ للشعارات والباركود والنص الدقيق والعبوات الدقيقة."],
+  },
+  {
+    en: ["U-cell", "Laser gravure", "Smooth cells, custom dots, and about 10–15% less ink at equal density."],
+    ar: ["خلية U", "حفر ليزر", "خلايا ملساء ونقاط حسب الطلب، وحبر أقل بنحو 10–15% عند الكثافة نفسها."],
+  },
+  {
+    en: ["60+", "Customers", "Ten markets across the Gulf, the Middle East and Africa."],
+    ar: ["+60", "عميلاً", "عشر أسواق في الخليج والشرق الأوسط وأفريقيا."],
+  },
 ];
 
 export function HomePage() {
@@ -26,22 +45,20 @@ export function HomePage() {
 
   const steps = ar
     ? [
-        ["استلام التصميم", "أرسلوا العبوة وطول التكرار والمطبعة. يكفي اسم ورقم لفتح الطلب."],
-        ["ما قبل الطباعة", "يُراجع الملف ويُفصل قبل أن يُمس المعدن."],
-        ["القاعدة", "تُجهَّز الأسطوانة لطول الوجه والمحيط الذي تحتاجه المطبعة."],
-        ["الحفر", "تُحفر الصورة على منصات المجموعة: Daetwyler وHell وOhio."],
-        ["الكروم", "طبقة كروم تحمي الحفر خلال الإنتاج."],
-        ["البروفة", "تُسحب بروفة ليقارن المطبعة النتيجة مع التصميم المعتمد."],
-        ["التسليم", "تغادر الأسطوانة أم القيوين إلى المطبعة."],
+        ["اللون والملف", "تُضبط منحنيات ICC والحفر بـ GMG حسب الخامة، ليتفق الدليل الرقمي وبروفة الأسطوانة والنتيجة على المطبعة."],
+        ["قاعدة CNC", "تُخرط الأسطوانة بدرجة سماحية IT6، واستدارة نحو 0.0025 مم، وخشونة Ra 0.8–1.6 ميكرومتر."],
+        ["طلاء النحاس", "أحواض بطول 1.7 متر تطلي أسطوانة واحدة في كل مرة، فيُضبط السمك لكل أسطوانة."],
+        ["الحفر", "HELL K5 Smart وHelioXtreme للحفر الكهروميكانيكي، أو الليزر حين تحتاج الخلية شكل U."],
+        ["الكروم والجودة", "قبل الشحن تُراجع الأبعاد وسطح الأسطوانة والحفر ولون البروفة."],
+        ["البروفة والتسليم", "يخلط الحبر آلياً حسب الوصفة، ومنها أهداف بانتون، ثم تغادر الأسطوانة أم القيوين."],
       ]
     : [
-        ["Artwork in", "Send the pack, the repeat and the press. A name and a phone number open the job."],
-        ["Prepress", "The file is checked and separated before any metal is cut."],
-        ["Base", "The cylinder is prepared to the face length and circumference the press needs."],
-        ["Engraving", "The image is engraved on the group’s Daetwyler, Hell and Ohio platforms."],
-        ["Chrome", "A chrome layer protects the engraving for the run."],
-        ["Proof", "A proof is pulled so the printer can compare it with the approved artwork."],
-        ["Dispatch", "The cylinder leaves Umm Al Quwain for the press."],
+        ["Colour and file", "ICC and engraving curves are set with GMG for the substrate, so the digital proof, the cylinder proof and the press result agree."],
+        ["CNC base", "The cylinder is turned to tolerance grade IT6, roundness about 0.0025 mm, and roughness Ra 0.8–1.6 μm."],
+        ["Copper plate", "1.7-metre tanks plate one cylinder at a time, so thickness is set for that cylinder."],
+        ["Engrave", "HELL K5 Smart and HelioXtreme for electromechanical engraving, or laser when the cell has to be a U."],
+        ["Chrome and QC", "Before dispatch the plant checks dimensions, surface, engraving and proof colour."],
+        ["Proof and dispatch", "Ink is dispensed from stored formulas, including Pantone targets, then the cylinder leaves Umm Al Quwain."],
       ];
 
   return (
@@ -61,18 +78,15 @@ export function HomePage() {
         <div className="relative flex min-h-svh flex-col justify-end px-5 pb-12 pt-40 sm:px-8 sm:pb-16 lg:pt-36 md:pb-20">
           <div className="max-w-[680px]">
             <p className="eyebrow !text-paper/75" data-load style={{ ["--d" as string]: "0.05s" }}>
-              {ar ? "مصنع أسطوانات · أم القيوين" : "Cylinder plant · Umm Al Quwain"}
+              {ar ? "مصنع أسطوانات · أم القيوين · منذ سبتمبر 2023" : "Cylinder plant · Umm Al Quwain · since September 2023"}
             </p>
             <h1 className="font-display mt-4 text-[clamp(2.8rem,6vw,5.25rem)] text-white" data-load style={{ ["--d" as string]: "0.16s" }}>
-              {ar ? "أسطوانات حفر لمطابع الخليج." : "Cylinders engraved for the presses of the Gulf."}
+              {ar ? "أسطوانات روتوغرافور لتغليف الخليج." : "Rotogravure cylinders for packaging in the Gulf."}
             </h1>
-            <p className="font-display mt-4 text-[clamp(1.8rem,4vw,3rem)] text-white" dir="ltr" data-load style={{ ["--d" as string]: "0.22s" }}>
-              2009 → 2026
-            </p>
             <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-white/85" data-load style={{ ["--d" as string]: "0.28s" }}>
               {ar
-                ? "ماستر برينتنغ بليت إندستري ذ.م.م هي مصنع أم القيوين التابع لمجموعة ماستر رولر. من الملف الفني إلى الكروم والبروفة، لطابعات التغليف والديكور."
-                : "Master Printing Plate Industry L.L.C. is the Umm Al Quwain plant of Master Roller Group. From artwork to chrome and proof, for packaging and décor printers."}
+                ? "ماستر برينتنغ بليت إندستري ذ.م.م تحفر أسطوانات التغليف المرن والدوائي والتبغ في أم القيوين. من ما قبل الطباعة حتى الحفر بآلات HELL والليزر والبروفة."
+                : "Master Printing Plate Industry L.L.C. engraves flexible, pharmaceutical and tobacco packaging cylinders in Umm Al Quwain. From prepress through HELL and laser engraving to the proof."}
             </p>
             <div className="mt-9 flex flex-wrap gap-3" data-load style={{ ["--d" as string]: "0.4s" }}>
               <Link href="/cylinders" className="btn btn-ink bg-paper text-ink hover:bg-white">
@@ -84,38 +98,39 @@ export function HomePage() {
               </a>
             </div>
           </div>
-          <div className="mt-10 flex flex-col items-start gap-2 border-t border-white/25 pt-5 text-start text-xs tracking-[0.12em] text-white/75 uppercase sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-between sm:gap-4 sm:tracking-[0.16em]" data-load style={{ ["--d" as string]: "0.5s" }}>
-            <span>{ar ? "منذ 2009" : "Since 2009"}</span>
-            <span>{ar ? "100,000+ أسطوانة سنوياً للمجموعة" : "100,000+ cylinders a year, group-wide"}</span>
-            <span dir="ltr">{company.phoneDisplay}</span>
-          </div>
+          <ul className="mt-10 flex flex-col items-start gap-2 border-t border-white/25 pt-5 text-start text-xs tracking-[0.12em] text-white/75 uppercase sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-between sm:gap-4 sm:tracking-[0.16em]" data-load style={{ ["--d" as string]: "0.5s" }}>
+            <li>{ar ? "المجموعة منذ 2009" : "Group since 2009"}</li>
+            <li>{ar ? "الإمارات منذ 2023" : "UAE since 2023"}</li>
+            <li>{ar ? "أكثر من 60 عميلاً" : "60+ customers"}</li>
+            <li>{ar ? "10 أسواق" : "10 markets"}</li>
+          </ul>
         </div>
       </section>
 
       <section className="bg-paper-2" data-reveal>
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
-          <p className="eyebrow">{ar ? "الطريق" : "The journey"}</p>
+          <p className="eyebrow">{ar ? "المجموعة" : "The group"}</p>
           <h2 className="font-display mt-3 max-w-3xl">
-            {ar ? "من ورشة في بانكوك إلى مصنع في الخليج." : "From a workshop in Bangkok to a plant in the Gulf."}
+            {ar ? "من بانكوك عام 2009 إلى أم القيوين عام 2023." : "From Bangkok in 2009 to Umm Al Quwain in 2023."}
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">
             {ar
-              ? "منذ 2009 تصنع مجموعة ماستر رولر أسطوانات الروتوغرافور. الطريق يمر بتايلاند وميانمار وبنغلاديش، ويصل إلى ماستر برينتنغ بليت إندستري ذ.م.م في أم القيوين."
-              : "Master Roller Group has made rotogravure cylinders since 2009. The route runs through Thailand, Myanmar and Bangladesh, and arrives at Master Printing Plate Industry L.L.C. in Umm Al Quwain."}
+              ? "ماستر برينتنغ بليت إندستري جزء من مجموعة ماستر، ومقرها تايلاند. منذ 2009 تبني المجموعة شراكات في تايلاند وميانمار وبنغلاديش، ثم في الإمارات."
+              : "Master Printing Plate Industry is part of Master Group, headquartered in Thailand. Since 2009 the group has built partnerships in Thailand, Myanmar and Bangladesh, and then in the Emirates."}
           </p>
           <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {(ar
               ? [
-                  ["2009", "تايلاند", "تبدأ ماستر رولر (تايلاند) من بانكوك. الصورة أدناه للمقر، لا لمصنع أم القيوين."],
-                  ["ميانمار", "مصنع المجموعة", "أحد مصانع المجموعة على هذا الطريق. لا توجد صورة لهذا الموقع هنا."],
-                  ["بنغلاديش", "مصنع المجموعة", "مصنع آخر للمجموعة. لا توجد صورة لهذا الموقع هنا."],
-                  ["أم القيوين", "فرع الإمارات", "يُراجع الروتوغرافور هنا. الحرم الجديد بمساحة 5331 م² أُعلن عام 2025 وما زال قيد البناء."],
+                  ["2009", "تايلاند", "تبدأ ماستر رولر (تايلاند) من بانكوك. الصورة أدناه لمقر المجموعة."],
+                  ["ميانمار", "مصنع المجموعة", "ماستر رولر (ميانمار) على طريق المجموعة نفسه."],
+                  ["بنغلاديش", "صناعة الألواح", "ماستر بليت ميكينغ (بنغلاديش)."],
+                  ["2023", "أم القيوين", "تأسست ماستر برينتنغ بليت إندستري ذ.م.م في سبتمبر 2023."],
                 ]
               : [
-                  ["2009", "Thailand", "Master Roller (Thailand) starts in Bangkok. The photograph below is the headquarters, not the Umm Al Quwain plant."],
-                  ["Myanmar", "Group plant", "One of the group plants on this route. This site has no photograph of that location."],
-                  ["Bangladesh", "Group plant", "Another group plant. This site has no photograph of that location."],
-                  ["Umm Al Quwain", "UAE branch", "Rotogravure is checked here. The 5,331 m² campus was announced in 2025 and is still being built."],
+                  ["2009", "Thailand", "Master Roller (Thailand) starts in Bangkok. The photograph below is the group headquarters."],
+                  ["Myanmar", "Group plant", "Master Roller (Myanmar) on the same group route."],
+                  ["Bangladesh", "Plate making", "Master Plate Making (Bangladesh)."],
+                  ["2023", "Umm Al Quwain", "Master Printing Plate Industry L.L.C. is established in September 2023."],
                 ]
             ).map(([year, place, body]) => (
               <li key={year} className="border-s-2 border-accent bg-paper p-5">
@@ -139,15 +154,15 @@ export function HomePage() {
                 <h3 className="font-display text-[clamp(1.6rem,3vw,2.1rem)]">{ar ? "تايلاند" : "Thailand"}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">
                   {ar
-                    ? "مقر المجموعة منذ 2009. شركة الإمارات هي الاسم القانوني الآخر: ماستر برينتنغ بليت إندستري ذ.م.م."
-                    : "Group headquarters since 2009. The UAE company is the other legal name: Master Printing Plate Industry L.L.C."}
+                    ? "مقر المجموعة منذ 2009. الاسم القانوني في الإمارات: ماستر برينتنغ بليت إندستري ذ.م.م."
+                    : "Group headquarters since 2009. The UAE legal name is Master Printing Plate Industry L.L.C."}
                 </p>
               </div>
             </Link>
             <Link href="/plant" className="bg-paper">
               <Image
                 src="/images/uae/factory.webp"
-                alt={ar ? "رسم لمبنى ماستر برينتنغ بليت إندستري في أم القيوين" : "Rendering of the planned Master Printing Plate Industry building in Umm Al Quwain"}
+                alt={ar ? "ماستر برينتنغ بليت إندستري في أم القيوين" : "Master Printing Plate Industry in Umm Al Quwain"}
                 width={1200}
                 height={425}
                 className="aspect-[16/9] w-full object-cover"
@@ -157,8 +172,8 @@ export function HomePage() {
                 <h3 className="font-display text-[clamp(1.6rem,3vw,2.1rem)]">{ar ? "أم القيوين" : "Umm Al Quwain"}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">
                   {ar
-                    ? "رسم للمبنى المخطط في أم القيوين. الحرم ما زال قيد البناء، والعمل الحالي يستمر من المصنع."
-                    : "A rendering of the planned Umm Al Quwain building. The campus is still under construction, and current work continues from the plant."}
+                    ? "تأسس المصنع في سبتمبر 2023. يحفر أسطوانات التغليف المرن والدوائي والتبغ."
+                    : "The plant was established in September 2023. It engraves flexible, pharmaceutical and tobacco packaging cylinders."}
                 </p>
               </div>
             </Link>
@@ -168,12 +183,12 @@ export function HomePage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20" data-reveal>
         <div className="max-w-3xl text-start">
-          <p className="eyebrow">{ar ? "أعمالنا" : "Our work"}</p>
-          <h2 className="font-display mt-3">{ar ? "أسطوانات مختارة" : "Featured cylinders"}</h2>
+          <p className="eyebrow">{ar ? "الأسطوانات" : "Cylinders"}</p>
+          <h2 className="font-display mt-3">{ar ? "ما يُحفر في أم القيوين" : "What is engraved in Umm Al Quwain"}</h2>
           <p className="mt-4 max-w-xl text-sm leading-6 text-muted">
             {ar
-              ? "الروتوغرافور يُراجع في أم القيوين. خطوط الملمس والنقش جزء من كتالوج المجموعة وتُنسق من هذا الفرع."
-              : "Rotogravure is checked in Umm Al Quwain. Texture and embossing lines belong to the group catalogue and are coordinated from this branch."}
+              ? "التغليف المرن والدوائي والتبغ هي أعمال المصنع. حفر الليزر يُضاف حين تحتاج العبوة تفاصيل أدق أو خلية مختلفة."
+              : "Flexible, pharmaceutical and tobacco packaging are the plant’s work. Laser gravure is added when the pack needs finer detail or a different cell."}
           </p>
         </div>
 
@@ -182,7 +197,7 @@ export function HomePage() {
             <Image
               key={current.slug}
               src={current.image}
-              alt={current.title[lang]}
+              alt={current.imageNote[lang]}
               width={current.width}
               height={current.height}
               className="aspect-[16/10] w-full object-cover"
@@ -207,7 +222,7 @@ export function HomePage() {
               </button>
             </div>
             <Link href={`/cylinders/${current.slug}`} className="mt-6 inline-block text-sm text-blue">
-              {ar ? "افتح هذه الأسطوانة" : "Open this cylinder"} →
+              {ar ? `تفاصيل ${current.title.ar}` : `${current.title.en} details`} →
             </Link>
             <div className="mt-6 flex flex-wrap gap-2">
               {products.map((product, dot) => (
@@ -227,49 +242,29 @@ export function HomePage() {
 
       <section className="border-y border-line" data-reveal>
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-          <p className="eyebrow">{ar ? "ما نصنعه" : "What we make"}</p>
-          <h2 className="font-display mt-3 max-w-xl text-5xl">{ar ? "من أسطوانة واحدة إلى خط إنتاج." : "From one cylinder to a running line."}</h2>
-          <ol className="mt-10">
-            {products.slice(0, 4).map((product, step) => (
-              <li key={product.slug} className="border-t border-line">
-                <Link href={`/cylinders/${product.slug}`} className="grid gap-3 py-7 md:grid-cols-12 md:items-baseline">
-                  <span className="text-sm text-blue md:col-span-2">0{step + 1}</span>
-                  <span className="font-display text-[clamp(1.55rem,3vw,2.25rem)] md:col-span-4">{product.title[lang]}</span>
-                  <span className="text-sm leading-6 text-muted md:col-span-6">{product.summary[lang]}</span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-          <Link href="/cylinders" className="mt-2 inline-block text-sm text-blue">
-            {ar ? "كل التشكيلة" : "View the full range"} →
+          <p className="eyebrow">{ar ? "القدرة" : "Capability"}</p>
+          <h2 className="font-display mt-3 max-w-xl">{ar ? "آلات المصنع، بالأرقام المنشورة." : "The plant’s machines, in the figures it publishes."}</h2>
+          <ul className="mt-10 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {capabilities.map((item) => {
+              const [figure, title, body] = item[lang];
+              return (
+                <li key={title} className="bg-paper p-6">
+                  <p className="font-display text-4xl">{figure}</p>
+                  <h3 className="mt-2 text-lg">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
+                </li>
+              );
+            })}
+          </ul>
+          <Link href="/plant" className="mt-6 inline-block text-sm text-blue">
+            {ar ? "مواصفات المصنع" : "Plant specifications"} →
           </Link>
-        </div>
-      </section>
-
-      <section className="bg-paper-2" data-reveal>
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 sm:px-8 lg:grid-cols-2">
-          <div>
-            <p className="eyebrow">{ar ? "الأسطح" : "Surfaces"}</p>
-            <h2 className="font-display mt-3 text-5xl">{ar ? "خشب ورخام، على كامل التكرار." : "Wood and marble, held across the repeat."}</h2>
-            <p className="mt-5 leading-7 text-muted">
-              {ar
-                ? "هذه مراجع للنقشة من كتالوج المجموعة، لا صوراً لورشة أم القيوين. العرق يجب أن يبقى متماسكاً على الأسطوانة كلها."
-                : "These are pattern references from the group catalogue, not photographs of the Umm Al Quwain shop. The grain has to hold together around the whole cylinder."}
-            </p>
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {surfaces.map((item) => (
-              <figure key={item.src} className="overflow-hidden bg-white">
-                <Image src={item.src} alt={item[lang]} width={600} height={391} className="aspect-[4/5] w-full object-cover transition duration-700 hover:scale-105" />
-              </figure>
-            ))}
-          </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8" data-reveal>
         <p className="eyebrow">{ar ? "طريقة العمل" : "How a cylinder moves"}</p>
-        <h2 className="font-display mt-3 max-w-2xl text-5xl">{ar ? "من الملف إلى بروفة يمكن توقيعها." : "From the file to a proof you can sign."}</h2>
+        <h2 className="font-display mt-3 max-w-2xl">{ar ? "من الملف إلى بروفة يمكن توقيعها." : "From the file to a proof you can sign."}</h2>
         <ol className="mt-10 grid gap-x-10 md:grid-cols-2">
           {steps.map(([title, body], step) => (
             <li key={title} className="border-t border-line py-6">
@@ -280,7 +275,7 @@ export function HomePage() {
           ))}
         </ol>
         <Link href="/process" className="mt-4 inline-block text-sm text-blue">
-          {ar ? "التفاصيل" : "Read the process"} →
+          {ar ? "اقرأ طريقة الحفر، بما فيها الليزر مقابل الكهرباء" : "Read the process, including laser and electromechanical engraving"} →
         </Link>
       </section>
 
@@ -289,52 +284,48 @@ export function HomePage() {
           <figure className="overflow-hidden">
             <Image
               src="/images/uae/proofing.webp"
-              alt={ar ? "أسطوانات جاهزة في منطقة البروفة" : "Finished cylinders in the proofing area"}
+              alt={ar ? "أسطوانات جاهزة في منطقة البروفة في أم القيوين" : "Finished cylinders in the proofing area in Umm Al Quwain"}
               width={2400}
               height={925}
               className="aspect-[16/9] w-full object-cover"
             />
             <figcaption className="mt-3 text-xs leading-5 text-muted">
               {ar
-                ? "أسطوانات جاهزة للبروفة. العنوان في أم القيوين هو ماستر برينتنغ بليت إندستري ذ.م.م."
-                : "Cylinders ready for proofing. The Umm Al Quwain company is Master Printing Plate Industry L.L.C."}
+                ? "أسطوانات جاهزة للبروفة. العنوان: قطعة 950، شارع الاتحاد، أم ديرا."
+                : "Cylinders ready for proofing. Address: Plot 950, Al Itehaad Street, Umm Deara."}
             </figcaption>
           </figure>
           <div>
-            <p className="eyebrow">{ar ? "المصنع" : "The plant"}</p>
-            <h2 className="font-display mt-3 text-5xl">{ar ? "فريق واحد، من الملف حتى البروفة." : "One plant, from the file to the proof."}</h2>
+            <p className="eyebrow">{ar ? "الأسواق" : "Markets"}</p>
+            <h2 className="font-display mt-3">{ar ? "عشرة أسواق، وأكثر من ستين عميلاً." : "Ten markets, and more than sixty customers."}</h2>
             <p className="mt-5 leading-7 text-muted">
               {ar
-                ? "العنوان: قطعة 950، شارع الاتحاد، بلوك 5، أم ديرا. الحرم الجديد بمساحة 5331 متراً مربعاً أُعلن عام 2025 وما زال البناء يتقدم."
-                : "Plot 950, Al Itehaad Street, Block 5, Umm Deara. The new 5,331 m² campus was announced in 2025, and construction has kept moving through 2026."}
+                ? "يخدم المصنع عملاء في الإمارات والخليج والشرق الأوسط وأفريقيا."
+                : "The plant serves customers in the UAE, the wider GCC, the Middle East and Africa."}
             </p>
-            <Link href="/plant" className="btn btn-ink mt-8">
-              {ar ? "موقع المصنع" : "Visit the plant"}
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {markets.map((market) => (
+                <li key={market.en} className="border border-line bg-paper px-3 py-1 text-sm">
+                  {market[lang]}
+                </li>
+              ))}
+            </ul>
+            <Link href="/about" className="btn btn-ink mt-8">
+              {ar ? "عن المجموعة" : "About the group"}
               <span aria-hidden>→</span>
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20" data-reveal>
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20" data-reveal id="faq">
         <p className="eyebrow">{ar ? "أسئلة" : "Questions"}</p>
         <h2 className="font-display mt-3 max-w-2xl">{ar ? "قبل أن ترسلوا الملف." : "Before you send the artwork."}</h2>
         <dl className="mt-8 divide-y divide-line border-y border-line">
-          {(ar
-            ? [
-                ["أين المصنع؟", "قطعة 950، شارع الاتحاد، بلوك 5، أم ديرا، أم القيوين. الهاتف +971 54 730 7258."],
-                ["ما الأسطوانات التي تُراجع هنا؟", "أسطوانات الروتوغرافور والتغليف المرن تُراجع في أم القيوين، من الملف إلى الكروم والبروفة. خطوط الملمس والنقش من كتالوج المجموعة وتُنسق من هذا الفرع."],
-                ["كيف أطلب أسطوانة؟", "الاسم ورقم الهاتف وتفاصيل المطبعة تكفي. النموذج يفتح واتساب المصنع ولا يحفظ البيانات على الموقع."],
-              ]
-            : [
-                ["Where is the Master Roller UAE plant?", "Plot 950, Al Itehaad Street, Block 5, Umm Deara, Umm Al Quwain. Phone +971 54 730 7258."],
-                ["Which cylinders are checked in Umm Al Quwain?", "Rotogravure and flexible-packaging cylinders are checked in Umm Al Quwain, from artwork through chrome and proof. Texture and embossing lines come from the group catalogue and are coordinated from this branch."],
-                ["How do I request a gravure cylinder?", "A name, a phone number and the press details are enough. The form opens the plant WhatsApp and stores nothing on this website."],
-              ]
-          ).map(([question, answer]) => (
-            <div key={question} className="grid gap-2 py-6 md:grid-cols-12">
-              <dt className="font-display text-[clamp(1.45rem,3vw,1.85rem)] md:col-span-5">{question}</dt>
-              <dd className="text-sm leading-6 text-muted md:col-span-7">{answer}</dd>
+          {faqs.map((item) => (
+            <div key={item.q.en} className="grid gap-2 py-6 md:grid-cols-12">
+              <dt className="font-display text-[clamp(1.45rem,3vw,1.85rem)] md:col-span-5">{item.q[lang]}</dt>
+              <dd className="text-sm leading-6 text-muted md:col-span-7">{item.a[lang]}</dd>
             </div>
           ))}
         </dl>
@@ -344,9 +335,11 @@ export function HomePage() {
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-20 sm:px-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="eyebrow !text-yellow">{ar ? "ابدأ طلباً" : "Start a job"}</p>
-            <h2 className="font-display mt-3 max-w-xl text-5xl">{ar ? "أخبرونا عن المطبعة." : "Tell us about the press."}</h2>
+            <h2 className="font-display mt-3 max-w-xl">{ar ? "أخبرونا عن المطبعة." : "Tell us about the press."}</h2>
             <p className="mt-4 max-w-md text-sm leading-6 text-paper/70">
-              {ar ? "النوع، طول التكرار، والموعد. نرد على واتساب المصنع." : "The cylinder, the repeat, and the date. The reply comes back on the plant WhatsApp."}
+              {ar
+                ? "النوع، طول التكرار، والموعد. الرد يأتي على واتساب المصنع أو بالبريد."
+                : "The cylinder, the repeat, and the date. The reply comes back on the plant WhatsApp or by email."}
             </p>
           </div>
           <Link href="/contact" className="btn bg-paper text-ink">

@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { useI18n } from "@/lib/i18n";
 import { familyLabel, products, type Family } from "@/lib/products";
 
-const filters: Array<Family | "all"> = ["all", "packaging", "decor", "special"];
+const filters: Array<Family | "all"> = ["all", "packaging", "laser", "special"];
 
 export function CylindersPage() {
   const { lang } = useI18n();
@@ -21,14 +22,20 @@ export function CylindersPage() {
 
   return (
     <article className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
-      <p className="eyebrow">{ar ? "التشكيلة" : "Range"}</p>
-      <h1 className="font-display mt-3 max-w-3xl text-5xl sm:text-6xl">
-        {ar ? "أسطوانات التغليف والديكور والخاصة." : "Packaging, décor and special cylinders."}
+      <Breadcrumbs
+        items={[
+          { href: "/", en: "Home", ar: "الرئيسية" },
+          { en: "Cylinders", ar: "الأسطوانات" },
+        ]}
+      />
+      <p className="eyebrow mt-6">{ar ? "التشكيلة" : "Range"}</p>
+      <h1 className="font-display mt-3 max-w-3xl">
+        {ar ? "أسطوانات تغليف، وحفر ليزر، وأعمال خاصة." : "Packaging cylinders, laser gravure, and special work."}
       </h1>
       <p className="mt-5 max-w-2xl leading-7 text-muted">
         {ar
-          ? "الروتوغرافور يُصنع ويُراجع في أم القيوين. خطوط الملمس والنقش والسيراميك جزء من كتالوج مجموعة ماستر رولر وتُنسق عبر هذا الفرع."
-          : "Rotogravure is made and checked in Umm Al Quwain. Texture, embossing and ceramic lines are part of the Master Roller Group catalogue and are coordinated through this branch."}
+          ? "تُحفر أسطوانات التغليف المرن والدوائي والتبغ في أم القيوين. حفر الليزر يُستخدم للنص الدقيق والنقش الأمني والنقش البارز حين يطلبه العمل."
+          : "Flexible, pharmaceutical and tobacco packaging cylinders are engraved in Umm Al Quwain. Laser gravure is used for microtext, security patterns and embossing when the job needs it."}
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2" role="group" aria-label={ar ? "تصفية" : "Filter"}>
@@ -50,7 +57,7 @@ export function CylindersPage() {
           <Link key={product.slug} href={`/cylinders/${product.slug}`} className="group border border-line bg-white">
             <Image
               src={product.image}
-              alt={product.title[lang]}
+              alt={product.imageNote[lang]}
               width={product.width}
               height={product.height}
               className="aspect-[16/10] w-full object-cover"

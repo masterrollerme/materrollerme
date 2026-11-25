@@ -1,13 +1,24 @@
-import type { Metadata } from "next";
 import { ContactPage } from "@/components/contact-page";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Contact the Umm Al Quwain plant",
   description:
-    "Call or WhatsApp Master Roller UAE on +971 54 730 7258 to request a gravure cylinder. Plant: Plot 950, Al Itehaad Street, Umm Deara, Umm Al Quwain.",
-  alternates: { canonical: "/contact" },
-};
+    "Request a rotogravure cylinder from Umm Al Quwain. Call +971 54 730 7258, email alexjoe.md@master-roller.com, or send the job on WhatsApp.",
+  path: "/contact",
+});
 
 export default function Page() {
-  return <ContactPage />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
+      <ContactPage />
+    </>
+  );
 }

@@ -41,8 +41,8 @@ export function Footer() {
           </Link>
           <p className="mt-6 max-w-sm text-sm leading-7 text-muted">
             {ar
-              ? "ماستر برينتنغ بليت إندستري ذ.م.م هي فرع الإمارات لمجموعة ماستر رولر. نحفر أسطوانات الروتوغرافور لطابعات التغليف والديكور."
-              : "Master Printing Plate Industry L.L.C. is the UAE plant of Master Roller Group. We engrave rotogravure cylinders for packaging and décor printers."}
+              ? "ماستر برينتنغ بليت إندستري ذ.م.م مصنع أم القيوين لمجموعة ماستر رولر. نحفر أسطوانات الروتوغرافور للتغليف المرن والدوائي والتبغ."
+              : "Master Printing Plate Industry L.L.C. is the Umm Al Quwain plant of Master Roller Group. We engrave rotogravure cylinders for flexible, pharmaceutical and tobacco packaging."}
           </p>
         </div>
         <div className="md:col-span-3">
@@ -75,9 +75,13 @@ export function Footer() {
                 </span>
               ))
             )}
+            <span className="block">{ar ? `صندوق بريد ${company.poBox}` : `P.O. Box ${company.poBox}`}</span>
           </address>
           <a className="mt-4 block" href={`tel:${company.phone}`} dir="ltr">
             {company.phoneDisplay}
+          </a>
+          <a className="mt-1 block text-sm" href={`mailto:${company.email}`}>
+            {company.email}
           </a>
           <a className="mt-1 block text-sm text-muted" href={`tel:${company.phoneAlt}`} dir="ltr">
             {company.phoneAltDisplay}

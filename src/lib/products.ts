@@ -1,4 +1,4 @@
-export type Family = "packaging" | "decor" | "special";
+export type Family = "packaging" | "laser" | "special";
 export type LocaleText = { en: string; ar: string };
 
 export type Product = {
@@ -16,7 +16,7 @@ export type Product = {
 
 export const familyLabel: Record<Family, LocaleText> = {
   packaging: { en: "Packaging", ar: "تغليف" },
-  decor: { en: "Décor", ar: "ديكور" },
+  laser: { en: "Laser gravure", ar: "حفر ليزر" },
   special: { en: "Special cylinders", ar: "أسطوانات خاصة" },
 };
 
@@ -28,235 +28,133 @@ export const products: Product[] = [
     width: 1800,
     height: 1351,
     imageNote: {
-      en: "A Hell K5 Smart engraving a copper cylinder.",
-      ar: "ماكينة Hell K5 Smart تحفر أسطوانة نحاسية.",
+      en: "A HELL K5 Smart engraving a copper cylinder.",
+      ar: "آلة HELL K5 Smart تحفر أسطوانة نحاسية.",
     },
     title: { en: "Rotogravure cylinders", ar: "أسطوانات الروتوغرافور" },
     summary: {
-      en: "The core of the Umm Al Quwain plant. Engraved cylinders for gravure presses, taken from artwork through chrome and proof before they reach the pressroom.",
-      ar: "أساس مصنع أم القيوين. أسطوانات محفورة لمطابع الحفر، من الملف الفني حتى الكروم والبروفة قبل أن تصل إلى صالة الطباعة.",
+      en: "Gravure cylinders for flexible packaging, engraved in Umm Al Quwain from prepress and copper plating through HELL engraving, chrome and proof.",
+      ar: "أسطوانات حفر للتغليف المرن، تُحفر في أم القيوين من ما قبل الطباعة وطلاء النحاس حتى حفر HELL والكروم والبروفة.",
     },
     points: {
       en: [
-        "Artwork intake, separation and cylinder making in one plant",
-        "Chrome plating and proofing before dispatch",
-        "Built for repeat packaging work across the Gulf and Africa",
-        "Backed by Master Roller Group engraving practice since 2009",
+        "Prepress, cylinder making, engraving and proofing in one plant",
+        "Two HELL K5 Smart XL and two K5 Smart electromechanical engravers",
+        "HD Gravure, CellEye volume measurement and SprintEasy stylus compensation",
+        "For converters across the UAE, the GCC, the Middle East and Africa",
       ],
       ar: [
-        "استلام الملفات والفصل وصناعة الأسطوانة في مصنع واحد",
-        "طلاء الكروم والبروفة قبل الشحن",
-        "مهيأة لأعمال التغليف المتكررة في الخليج وأفريقيا",
-        "تستند إلى خبرة مجموعة ماستر رولر في الحفر منذ 2009",
+        "ما قبل الطباعة وصناعة الأسطوانة والحفر والبروفة في مصنع واحد",
+        "آلتان HELL K5 Smart XL وآلتان K5 Smart للحفر الكهروميكانيكي",
+        "HD Gravure وقياس حجم الخلية CellEye وتعويض الإبرة SprintEasy",
+        "لمحولات الإمارات والخليج والشرق الأوسط وأفريقيا",
       ],
     },
     uses: {
-      en: ["Flexible packaging", "Labels and wraps", "Multi-SKU reprints", "Regional pressrooms"],
-      ar: ["التغليف المرن", "الملصقات والأغلفة", "إعادة طباعة عدة أصناف", "مطابع المنطقة"],
+      en: ["Flexible packaging", "Film and pouches", "Labels", "Repeat orders"],
+      ar: ["التغليف المرن", "الأفلام والأكياس", "الملصقات", "الطلبيات المتكررة"],
     },
   },
   {
-    slug: "flexible-packaging-rollers",
+    slug: "pharmaceutical-packaging-cylinders",
+    family: "packaging",
+    image: "/images/uae/hell.webp",
+    width: 1200,
+    height: 1150,
+    imageNote: {
+      en: "A HELL Gravure Systems head used for stylus compensation on electromechanical engraving.",
+      ar: "رأس HELL Gravure Systems يُستخدم لتعويض الإبرة في الحفر الكهروميكانيكي.",
+    },
+    title: { en: "Pharmaceutical packaging cylinders", ar: "أسطوانات التغليف الدوائي" },
+    summary: {
+      en: "Cylinders for pharmaceutical packs and labels, where barcodes, microtext and stable colour have to hold. HelioXtreme engraving reaches 540 lines per centimetre.",
+      ar: "أسطوانات للعبوات والملصقات الدوائية، حيث يجب أن يثبت الباركود والنص الدقيق واللون. حفر HelioXtreme يصل إلى 540 خطاً في السنتيمتر.",
+    },
+    points: {
+      en: [
+        "HELL HelioXtreme 32+ with XtremeEngraving",
+        "Writing resolution up to 540 lines/cm, set apart from the screen ruling",
+        "Suited to logos, barcodes, microtext and fine pharmaceutical artwork",
+        "ICC and engraving curves maintained with GMG for each substrate",
+      ],
+      ar: [
+        "HELL HelioXtreme 32+ بتقنية XtremeEngraving",
+        "دقة كتابة حتى 540 خطاً/سم، مستقلة عن تسطير الشاشة",
+        "مناسبة للشعارات والباركود والنص الدقيق ورسوم الدواء",
+        "منحنيات ICC والحفر تُدار بـ GMG لكل خامة",
+      ],
+    },
+    uses: {
+      en: ["Pharmaceutical packaging", "Labels", "Barcodes", "Microtext"],
+      ar: ["التغليف الدوائي", "الملصقات", "الباركود", "النص الدقيق"],
+    },
+  },
+  {
+    slug: "tobacco-packaging-cylinders",
     family: "packaging",
     image: "/images/uae/proofing.webp",
     width: 2400,
     height: 925,
     imageNote: {
-      en: "Finished cylinders in the proofing area.",
-      ar: "أسطوانات جاهزة في منطقة البروفة.",
+      en: "Finished cylinders in the proofing area before they leave the plant.",
+      ar: "أسطوانات جاهزة في منطقة البروفة قبل مغادرة المصنع.",
     },
-    title: { en: "Flexible pack rollers", ar: "أسطوانات التغليف المرن" },
+    title: { en: "Tobacco packaging cylinders", ar: "أسطوانات تغليف التبغ" },
     summary: {
-      en: "Cylinders prepared for film and pouch work, where repeat length, register and a clean proof matter as much as the engraving itself.",
-      ar: "أسطوانات مهيأة لأعمال الأفلام والأكياس، حيث يهم طول التكرار والتطابق والبروفة النظيفة بقدر أهمية الحفر نفسه.",
+      en: "Cylinders for tobacco packaging that need sharp contours, dense solids and stable colour across a long run. Laser gravure is used when the artwork calls for it.",
+      ar: "أسطوانات لتغليف التبغ تحتاج حوافاً حادة ومساحات مصمتة كثيفة ولوناً ثابتاً على الإنتاج الطويل. يُستخدم حفر الليزر حين يطلبه التصميم.",
     },
     points: {
       en: [
-        "For snack, film and pouch converters",
-        "Proofed so the printer sees the result before the run",
-        "Suited to repeat orders and artwork revisions",
-        "Coordinated from Umm Al Quwain for UAE lead times",
+        "One of the three packaging lines the Umm Al Quwain plant is built around",
+        "Electromechanical engraving where repeatable cell volume is the priority",
+        "Laser gravure for metallic ink, heavy solids and fine security detail",
+        "Proof colour checked against the approved file before dispatch",
       ],
       ar: [
-        "لمحولات السناك والأفلام والأكياس",
-        "تُراجع ببروفة ليرى المطبعة النتيجة قبل الإنتاج",
-        "مناسبة للطلبيات المتكررة وتعديلات التصميم",
-        "تُنسق من أم القيوين لمهل التسليم داخل الإمارات",
+        "أحد خطوط التغليف الثلاثة التي بُني حولها مصنع أم القيوين",
+        "حفر كهروميكانيكي حين تكون أولوية حجم الخلية القابل للتكرار",
+        "حفر ليزر للحبر المعدني والمساحات الثقيلة والتفاصيل الأمنية",
+        "يُراجع لون البروفة مقابل الملف المعتمد قبل الشحن",
       ],
     },
     uses: {
-      en: ["Snack packaging", "Pouches", "Shrink and wrap films", "Tobacco packaging"],
-      ar: ["تغليف السناك", "الأكياس", "أفلام التغليف", "تغليف التبغ"],
+      en: ["Tobacco packaging", "Cartons", "Metallic ink", "Long runs"],
+      ar: ["تغليف التبغ", "العلب", "الحبر المعدني", "الإنتاج الطويل"],
     },
   },
   {
-    slug: "wooden-texture-rollers",
-    family: "decor",
-    image: "/images/wood-1.jpg",
-    width: 600,
-    height: 391,
+    slug: "laser-gravure-cylinders",
+    family: "laser",
+    image: "/images/uae/dots.webp",
+    width: 800,
+    height: 304,
     imageNote: {
-      en: "Surface reference for a wood-grain pattern.",
-      ar: "مرجع سطح لنقشة عروق الخشب.",
+      en: "Electromechanical diamond cells beside laser cells, including a character at 100 and 400 lines per centimetre.",
+      ar: "خلايا ماسية للحفر الكهروميكانيكي إلى جانب خلايا الليزر، ومنها حرف عند 100 و400 خط في السنتيمتر.",
     },
-    title: { en: "Wooden texture rollers", ar: "أسطوانات ملمس الخشب" },
+    title: { en: "Laser gravure cylinders", ar: "أسطوانات حفر الليزر" },
     summary: {
-      en: "Rollers that carry wood-grain artwork for décor film, panels and laminate surfaces. The grain has to hold together across the full repeat, not only in a swatch.",
-      ar: "أسطوانات تحمل رسم عروق الخشب لأفلام الديكور والألواح والأسطح المصفحة. يجب أن يبقى العرق متماسكاً على كامل التكرار، لا في عينة صغيرة فقط.",
+      en: "Laser-assisted etching that forms smooth U-shaped cells. Dot shape, screen and angle follow the ink, instead of a fixed diamond stylus.",
+      ar: "حفر بمعاونة الليزر يكوّن خلايا U ملساء. شكل النقطة والتسطير والزاوية تتبع الحبر، لا إبرة ماسية ثابتة.",
     },
     points: {
       en: [
-        "Oak, walnut and other grain directions from the group catalogue",
-        "Used for furniture film, flooring and wall panels",
-        "Engraved so the repeat does not show a hard join",
-        "Supplied to décor printers through the UAE plant",
+        "Non-contact laser imaging of a resist, then controlled etching",
+        "Square, round, hexagonal or custom security dots",
+        "Screens above 200 lines/cm, with 0.05 mm lines and microtext",
+        "The plant’s comparison: about 10–15% less ink at the same density, and a more stable opening on long runs",
       ],
       ar: [
-        "اتجاهات سنديان وجوز وغيرها من كتالوج المجموعة",
-        "لأفلام الأثاث والأرضيات وألواح الجدران",
-        "تُحفر بحيث لا يظهر وصل حاد في التكرار",
-        "تُورَّد لطابعات الديكور عبر مصنع الإمارات",
+        "تصوير ليزر غير ملامس لطبقة مقاومة، ثم حفر مضبوط",
+        "نقاط مربعة أو دائرية أو سداسية أو أمنية حسب الطلب",
+        "تسطير فوق 200 خط/سم، مع خطوط 0.05 مم ونص دقيق",
+        "مقارنة المصنع: حبر أقل بنحو 10–15% عند الكثافة نفسها، وفتحة أثبت على الإنتاج الطويل",
       ],
     },
     uses: {
-      en: ["Furniture film", "Flooring", "Wall panels", "Door wraps"],
-      ar: ["أفلام الأثاث", "الأرضيات", "ألواح الجدران", "تغليف الأبواب"],
-    },
-  },
-  {
-    slug: "marble-grain-rollers",
-    family: "decor",
-    image: "/images/marble-1.jpg",
-    width: 600,
-    height: 391,
-    imageNote: {
-      en: "Surface reference for a marble vein.",
-      ar: "مرجع سطح لعرق الرخام.",
-    },
-    title: { en: "Marble grain rollers", ar: "أسطوانات عروق الرخام" },
-    summary: {
-      en: "Marble and stone patterns for decorative surfaces. Veins need a continuous flow around the cylinder, with the same care as a wood grain.",
-      ar: "نقوش رخام وحجر للأسطح الزخرفية. تحتاج العروق إلى جريان متصل حول الأسطوانة، بالعناية نفسها التي تُعطى لعروق الخشب.",
-    },
-    points: {
-      en: [
-        "Stone and marble artwork for décor converters",
-        "Prepared as part of the Master Roller surface range",
-        "Checked at proof against the approved reference",
-        "Available to UAE and regional décor printers",
-      ],
-      ar: [
-        "رسوم حجر ورخام لمحولات الديكور",
-        "ضمن مجموعة أسطح ماستر رولر",
-        "تُراجع في البروفة مقابل المرجع المعتمد",
-        "متاحة لطابعات الديكور في الإمارات والمنطقة",
-      ],
-    },
-    uses: {
-      en: ["Décor film", "Furniture panels", "Interior surfaces", "PVC décor"],
-      ar: ["أفلام الديكور", "ألواح الأثاث", "أسطح داخلية", "ديكور PVC"],
-    },
-  },
-  {
-    slug: "embossing-rollers",
-    family: "special",
-    image: "/images/uae/plating.webp",
-    width: 1200,
-    height: 1243,
-    imageNote: {
-      en: "A copper-plated cylinder on the plating line.",
-      ar: "أسطوانة مطلية بالنحاس على خط الطلاء.",
-    },
-    title: { en: "Embossing rollers", ar: "أسطوانات النقش البارز" },
-    summary: {
-      en: "Embossing rollers for decoration, from the group’s special-cylinder line. They put a physical texture into film and paper rather than only a printed image.",
-      ar: "أسطوانات نقش بارز للزينة، من خط الأسطوانات الخاصة في المجموعة. تضع ملمساً مادياً في الفيلم والورق، لا صورة مطبوعة فقط.",
-    },
-    points: {
-      en: [
-        "For décor, coating and specialty finishing",
-        "Paired with printed wood, marble and plain films",
-        "Made within Master Roller Group’s special-cylinder work",
-        "Quoted from the UAE desk for Middle East jobs",
-      ],
-      ar: [
-        "للديكور والطلاء والتشطيبات الخاصة",
-        "تُقرن مع أفلام الخشب والرخام والأفلام السادة",
-        "تُصنع ضمن أعمال الأسطوانات الخاصة لمجموعة ماستر رولر",
-        "يُسعَّر الطلب من مكتب الإمارات لأعمال الشرق الأوسط",
-      ],
-    },
-    uses: {
-      en: ["Décor emboss", "Specialty finishing", "Coated films", "Panel texture"],
-      ar: ["نقش الديكور", "تشطيب خاص", "أفلام مطلية", "ملمس الألواح"],
-    },
-  },
-  {
-    slug: "heat-transfer-rollers",
-    family: "special",
-    image: "/images/uae/ink.webp",
-    width: 1800,
-    height: 3368,
-    imageNote: {
-      en: "An automatic ink-mixing system used with the print work.",
-      ar: "نظام خلط حبر آلي يُستخدم مع أعمال الطباعة.",
-    },
-    title: { en: "Heat transfer rollers", ar: "أسطوانات النقل الحراري" },
-    summary: {
-      en: "Textile heat-transfer rollers. The cylinder prints the transfer paper that later releases the design onto fabric.",
-      ar: "أسطوانات النقل الحراري للنسيج. تطبع الأسطوانة ورق النقل الذي يحرر التصميم لاحقاً على القماش.",
-    },
-    points: {
-      en: [
-        "Listed in the Master Roller product range since the group’s early years",
-        "For textile printers working with transfer paper",
-        "Artwork, engraving and proof handled as one job",
-        "Supported for regional customers from Umm Al Quwain",
-      ],
-      ar: [
-        "ضمن تشكيلة ماستر رولر منذ سنوات المجموعة الأولى",
-        "لطابعات النسيج التي تعمل بورق النقل",
-        "الملف والحفر والبروفة تُعالج كطلب واحد",
-        "دعم لعملاء المنطقة من أم القيوين",
-      ],
-    },
-    uses: {
-      en: ["Textile transfer", "Fashion prints", "Home textiles", "Sportswear graphics"],
-      ar: ["النقل على النسيج", "طباعة الأزياء", "مفروشات المنزل", "رسوم الملابس الرياضية"],
-    },
-  },
-  {
-    slug: "ceramic-rollers",
-    family: "special",
-    image: "/images/uae/cfm.webp",
-    width: 1200,
-    height: 803,
-    imageNote: {
-      en: "A Daetwyler CFM used in cylinder processing.",
-      ar: "ماكينة Daetwyler CFM تُستخدم في تجهيز الأسطوانات.",
-    },
-    title: { en: "Ceramic and anilox rollers", ar: "أسطوانات سيراميك وأنيلكس" },
-    summary: {
-      en: "Ceramic and anilox rollers for high-precision coating and ink metering, supplied through the group’s special-cylinder capability.",
-      ar: "أسطوانات سيراميك وأنيلكس للطلاء الدقيق ومعايرة الحبر، تُورَّد عبر قدرة المجموعة على الأسطوانات الخاصة.",
-    },
-    points: {
-      en: [
-        "For coating lines and anilox metering",
-        "Specified with the printer’s press and coat weight in mind",
-        "Part of the special-roller range alongside embossing",
-        "Enquiries taken by the UAE plant",
-      ],
-      ar: [
-        "لخطوط الطلاء ومعايرة الأنيلكس",
-        "تُحدد وفق المطبعة ووزن طبقة الطلاء",
-        "ضمن مجموعة الأسطوانات الخاصة إلى جانب النقش",
-        "تُستقبل الطلبات في مصنع الإمارات",
-      ],
-    },
-    uses: {
-      en: ["Precision coating", "Ink metering", "Specialty gravure", "Finishing lines"],
-      ar: ["طلاء دقيق", "معايرة الحبر", "حفر متخصص", "خطوط التشطيب"],
+      en: ["Fine detail", "Metallic and solid ink", "Security patterns", "Million-metre runs"],
+      ar: ["التفاصيل الدقيقة", "الحبر المعدني والمصمت", "النقش الأمني", "إنتاج بملايين الأمتار"],
     },
   },
   {
@@ -271,26 +169,60 @@ export const products: Product[] = [
     },
     title: { en: "Anti-counterfeit cylinders", ar: "أسطوانات مكافحة التقليد" },
     summary: {
-      en: "Cylinders for security artwork on brand-protected packaging. Fine detail is agreed in prepress and confirmed on the proof.",
-      ar: "أسطوانات للرسوم الأمنية على التغليف المحمي للعلامة. تُعتمد التفاصيل الدقيقة في ما قبل الطباعة وتُؤكد على البروفة.",
+      en: "Cylinders for security artwork on protected packaging, tickets and lottery work: microtext, fine gradients and hidden patterns.",
+      ar: "أسطوانات للرسوم الأمنية على التغليف المحمي والتذاكر واليانصيب: نص دقيق وتدرجات ناعمة ونقوش مخفية.",
     },
     points: {
       en: [
-        "A published Master Roller product line",
-        "For brands that need protected packaging artwork",
-        "File review before engraving, proof before dispatch",
-        "Handled confidentially from enquiry to delivery",
+        "Custom security dots that a diamond stylus cannot cut",
+        "0.05 mm lines and gradients without a serrated edge",
+        "The file is reviewed before engraving and the proof before dispatch",
+        "Quoted from Umm Al Quwain for brand-protection work in the region",
       ],
       ar: [
-        "خط إنتاج معلن لدى ماستر رولر",
-        "للعلامات التي تحتاج رسوماً محمية على العبوة",
-        "مراجعة الملف قبل الحفر، والبروفة قبل الشحن",
-        "تُعامل بسرية من الاستفسار حتى التسليم",
+        "نقاط أمنية خاصة لا تقطعها الإبرة الماسية",
+        "خطوط 0.05 مم وتدرجات بلا حافة منشورة",
+        "يُراجع الملف قبل الحفر والبروفة قبل الشحن",
+        "يُسعَّر الطلب من أم القيوين لأعمال حماية العلامة في المنطقة",
       ],
     },
     uses: {
-      en: ["Brand protection", "Protected packaging", "Security artwork", "Special editions"],
-      ar: ["حماية العلامة", "تغليف محمي", "رسوم أمنية", "إصدارات خاصة"],
+      en: ["Brand protection", "Tickets", "Lottery", "Hidden patterns"],
+      ar: ["حماية العلامة", "التذاكر", "اليانصيب", "النقوش المخفية"],
+    },
+  },
+  {
+    slug: "embossing-rollers",
+    family: "special",
+    image: "/images/uae/plating.webp",
+    width: 1200,
+    height: 1243,
+    imageNote: {
+      en: "A copper-plated cylinder on the plating line.",
+      ar: "أسطوانة مطلية بالنحاس على خط الطلاء.",
+    },
+    title: { en: "Embossing rollers", ar: "أسطوانات النقش البارز" },
+    summary: {
+      en: "Embossing rollers quoted with the laser line, for packs where a physical texture sits with securities, tickets or specialty finishing.",
+      ar: "أسطوانات نقش بارز تُسعَّر مع خط الليزر، للعبوات التي يجتمع فيها ملمس مادي مع الأوراق المالية أو التذاكر أو التشطيب الخاص.",
+    },
+    points: {
+      en: [
+        "Named with securities, anti-counterfeit tickets and lottery work",
+        "Cell geometry is chosen for the finish rather than locked to a V-cell",
+        "Specified to the press face length and circumference",
+        "Enquiries taken by Master Printing Plate Industry in Umm Al Quwain",
+      ],
+      ar: [
+        "مذكورة مع الأوراق المالية وتذاكر مكافحة التقليد واليانصيب",
+        "هندسة الخلية تُختار للتشطيب ولا تُحبس في خلية V",
+        "تُحدد وفق طول وجه المطبعة والمحيط",
+        "تُستقبل الطلبات لدى ماستر برينتنغ بليت إندستري في أم القيوين",
+      ],
+    },
+    uses: {
+      en: ["Embossing", "Specialty finishing", "Securities", "Decorative texture"],
+      ar: ["النقش البارز", "تشطيب خاص", "أوراق مالية", "ملمس زخرفي"],
     },
   },
 ];

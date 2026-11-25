@@ -1,13 +1,24 @@
-import type { Metadata } from "next";
 import { ProcessPage } from "@/components/process-page";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Cylinder engraving process",
+export const metadata = pageMeta({
+  title: "Gravure cylinder engraving process",
   description:
-    "How a Master Roller cylinder moves from artwork through prepress, base preparation, engraving, chrome, proof and dispatch from Umm Al Quwain.",
-  alternates: { canonical: "/process" },
-};
+    "How a gravure cylinder is made in Umm Al Quwain: colour management, CNC turning, copper and chrome plating, HELL engraving, laser gravure and proofing.",
+  path: "/process",
+});
 
 export default function Page() {
-  return <ProcessPage />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Process", path: "/process" },
+        ])}
+      />
+      <ProcessPage />
+    </>
+  );
 }

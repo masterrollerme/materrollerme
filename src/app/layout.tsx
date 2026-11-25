@@ -4,8 +4,10 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Preloader } from "@/components/preloader";
 import { RevealObserver } from "@/components/reveal-observer";
+import { JsonLd } from "@/components/json-ld";
 import { company, siteUrl } from "@/lib/company";
 import { LanguageProvider } from "@/lib/i18n";
+import { organizationLd, websiteLd } from "@/lib/seo";
 import "./globals.css";
 
 const jost = Jost({
@@ -27,18 +29,19 @@ const cairo = Cairo({
 });
 
 const description =
-  "Master Printing Plate Industry L.L.C. engraves rotogravure and flexible-packaging cylinders in Umm Al Quwain, and coordinates texture, embossing and security cylinders for printers in the Gulf.";
+  "Master Printing Plate Industry L.L.C. engraves rotogravure cylinders in Umm Al Quwain for flexible, pharmaceutical and tobacco packaging, with HELL and laser gravure.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Master Roller UAE | Gravure cylinders in Umm Al Quwain",
+    default: "Master Roller UAE | Rotogravure cylinders in Umm Al Quwain",
     template: "%s · Master Roller UAE",
   },
   description,
   applicationName: "Master Roller UAE",
   authors: [{ name: company.legal, url: company.parentSite }],
   creator: company.legal,
+  category: "Manufacturing",
   robots: {
     index: true,
     follow: true,
@@ -48,59 +51,16 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Master Roller UAE",
     locale: "en_AE",
-    title: "Master Roller UAE | Gravure cylinders in Umm Al Quwain",
+    title: "Master Roller UAE | Rotogravure cylinders in Umm Al Quwain",
     description,
     images: [{ url: "/images/uae/hero.webp", width: 2400, height: 1565, alt: "Copper gravure cylinders beside a Daetwyler plating line" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Master Roller UAE | Gravure cylinders in Umm Al Quwain",
+    title: "Master Roller UAE | Rotogravure cylinders in Umm Al Quwain",
     description,
     images: ["/images/uae/hero.webp"],
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ManufacturingBusiness",
-  name: company.legal,
-  alternateName: ["Master Roller UAE", company.brand],
-  parentOrganization: { "@type": "Organization", name: company.parent, url: company.parentSite },
-  url: siteUrl,
-  telephone: company.phoneDisplay,
-  image: `${siteUrl}/images/uae/hero.webp`,
-  hasMap: company.mapLink,
-  areaServed: { "@type": "Country", name: "United Arab Emirates" },
-  knowsAbout: [
-    "Rotogravure cylinders",
-    "Flexible packaging cylinders",
-    "Wood grain rollers",
-    "Marble grain rollers",
-    "Embossing rollers",
-    "Heat transfer rollers",
-    "Ceramic anilox rollers",
-    "Anti-counterfeit cylinders",
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: company.phoneDisplay,
-    contactType: "sales",
-    areaServed: "AE",
-    availableLanguage: ["English", "Arabic"],
-  },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Plot No. 950, Al Itehaad Street, Block 5, Umm Deara",
-    addressLocality: "Umm Al Quwain",
-    addressRegion: "Umm Al Quwain",
-    addressCountry: "AE",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: company.lat,
-    longitude: company.lng,
-  },
-  sameAs: [company.parentSite],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -110,7 +70,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${jost.variable} ${cormorant.variable} ${cairo.variable} js h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <JsonLd data={organizationLd} />
+        <JsonLd data={websiteLd} />
         <LanguageProvider>
           <Preloader />
           <RevealObserver />

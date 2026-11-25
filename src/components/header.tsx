@@ -8,6 +8,7 @@ import { useI18n, type Lang } from "@/lib/i18n";
 
 const links = {
   en: [
+    { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/cylinders", label: "Cylinders" },
     { href: "/process", label: "Process" },
@@ -15,6 +16,7 @@ const links = {
     { href: "/contact", label: "Contact" },
   ],
   ar: [
+    { href: "/", label: "الرئيسية" },
     { href: "/about", label: "عن الشركة" },
     { href: "/cylinders", label: "الأسطوانات" },
     { href: "/process", label: "طريقة العمل" },
@@ -61,7 +63,7 @@ export function Header() {
 
         <nav className="flex flex-wrap items-center gap-x-4 gap-y-1 text-start text-[0.72rem] tracking-[0.08em] uppercase sm:text-[0.78rem] lg:flex-1 lg:justify-center lg:gap-x-5 lg:text-[0.82rem] lg:tracking-[0.12em]" aria-label="Primary">
           {items.map((item) => {
-            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const active = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}

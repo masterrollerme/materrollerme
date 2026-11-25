@@ -1,12 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { company, groupCompanies, markets } from "@/lib/company";
 import { useI18n } from "@/lib/i18n";
-
-const principles = {
-  en: ["Attention", "Courage", "Efficiency", "Refinement", "High quality", "Trust", "Sharing"],
-  ar: ["انتباه", "شجاعة", "كفاءة", "إتقان", "جودة عالية", "ثقة", "مشاركة"],
-};
 
 export function AboutPage() {
   const { lang } = useI18n();
@@ -14,34 +12,40 @@ export function AboutPage() {
 
   return (
     <article className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
-      <p className="eyebrow">{ar ? "المجموعة" : "The group"}</p>
-      <h1 className="font-display mt-3 max-w-3xl text-5xl sm:text-6xl">
-        {ar ? "صانع أسطوانات منذ 2009، ومصنع في أم القيوين." : "Cylinder makers since 2009, with a plant in Umm Al Quwain."}
+      <Breadcrumbs
+        items={[
+          { href: "/", en: "Home", ar: "الرئيسية" },
+          { en: "About", ar: "عن الشركة" },
+        ]}
+      />
+      <p className="eyebrow mt-6">{ar ? "المجموعة" : "The group"}</p>
+      <h1 className="font-display mt-3 max-w-3xl">
+        {ar ? "صانع أسطوانات منذ 2009، ومصنع في أم القيوين منذ 2023." : "Cylinder makers since 2009, with a Umm Al Quwain plant since 2023."}
       </h1>
       <div className="mt-8 grid gap-10 lg:grid-cols-12">
         <div className="space-y-5 text-lg leading-8 text-muted lg:col-span-7">
           <p>
             {ar
-              ? "ماستر رولر (تايلاند) شركة متخصصة في أسطوانات الروتوغرافور منذ 2009، انطلاقاً من بانكوك. نمت المجموعة إلى مصانع في تايلاند وميانمار وبنغلاديش والإمارات."
-              : "Master Roller (Thailand) has made rotogravure cylinders since 2009, starting from Bangkok. The group now has plants in Thailand, Myanmar, Bangladesh and the United Arab Emirates."}
+              ? "ماستر برينتنغ بليت إندستري ذ.م.م جزء من مجموعة ماستر، ومقرها تايلاند. منذ تأسيسها عام 2009 واصلت المجموعة تطوير التقنية والجودة والإدارة، وبنت شراكات مع عملاء في تايلاند وميانمار وبنغلاديش وخارجها."
+              : "Master Printing Plate Industry L.L.C. is part of Master Group, headquartered in Thailand. Since its establishment in 2009, the group has kept improving technology, quality and management, and has built partnerships with customers across Thailand, Myanmar, Bangladesh and beyond."}
           </p>
           <p>
             {ar
-              ? "في الإمارات تعمل الشركة تحت اسم ماستر برينتنغ بليت إندستري ذ.م.م. يستقبل المصنع ملفات التغليف والديكور، ويجهّز الأسطوانة، ويطليها بالكروم، ويخرج البروفة قبل التسليم."
-              : "In the UAE the company trades as Master Printing Plate Industry L.L.C. The plant takes packaging and décor files, prepares the cylinder, chromes it, and pulls a proof before delivery."}
+              ? "تأسست الشركة في أم القيوين في سبتمبر 2023. تختص بأسطوانات الروتوغرافور للتغليف المرن والتغليف الدوائي وتغليف التبغ. تجمع آلات الحفر الإلكترونية الألمانية HELL مع حفر الليزر، وتغطي ما قبل الطباعة وصناعة الأسطوانة والحفر والبروفة."
+              : "The company was established in Umm Al Quwain in September 2023. It specialises in rotogravure cylinders for flexible packaging, pharmaceutical packaging and tobacco packaging. It combines German HELL electronic engraving with laser engraving, and covers prepress, cylinder making, engraving and proofing."}
           </p>
           <p>
             {ar
-              ? "التشكيلة الأوسع — ملمس الخشب والرخام، النقش، السيراميك، النقل الحراري، وأسطوانات الحماية — جزء من كتالوج المجموعة، ويُنسق لعملاء الشرق الأوسط وأفريقيا من هذا الفرع."
-              : "The wider range — wood and marble texture, embossing, ceramic, heat transfer and security cylinders — belongs to the group catalogue, and is coordinated for Middle East and Africa customers from this branch."}
+              ? "يخدم المصنع أكثر من 60 عميلاً في الإمارات والخليج والشرق الأوسط وأفريقيا، مع تسليم يمكن الاعتماد عليه ودعم فني يستجيب."
+              : "The plant serves more than 60 customers across the UAE, the wider GCC, the Middle East and Africa, with consistent quality, reliable delivery and responsive technical support."}
           </p>
         </div>
         <aside className="bg-field p-6 text-ink lg:col-span-5">
-          <p className="eyebrow">{ar ? "مبدأ المجموعة" : "Group principle"}</p>
-          <ul className="mt-4 space-y-2 text-lg">
-            {principles[lang].map((item) => (
-              <li key={item} className="border-b border-line py-2">
-                {item}
+          <p className="eyebrow">{ar ? "شركات المجموعة" : "Group companies"}</p>
+          <ul className="mt-4 space-y-2">
+            {groupCompanies.map((item) => (
+              <li key={item.en} className="border-b border-line py-2 text-base">
+                {item[lang]}
               </li>
             ))}
           </ul>
@@ -51,22 +55,22 @@ export function AboutPage() {
       <section className="mt-16 grid gap-6 border-t border-line pt-10 md:grid-cols-3">
         {[
           {
-            title: ar ? "الحفر" : "Engraving",
+            title: ar ? "إدارة اللون" : "Colour management",
             body: ar
-              ? "منصات المجموعة المذكورة على الموقع الأم تشمل Daetwyler GS وHell K5 Smart وOhio وHell Galaxy ليزر، إلى جانب المخارط المبرمجة."
-              : "Platforms named by the group include Daetwyler GS, Hell K5 Smart, Ohio and Hell Galaxy laser, alongside CNC lathes.",
+              ? "يضبط مهندس اللون منحنيات ICC والحفر بأجهزة GMG وغيرها، حسب كل خامة، ليتفق الدليل الرقمي وبروفة الأسطوانة والنتيجة النهائية عند العميل."
+              : "A colour engineer sets and maintains ICC and engraving curves with GMG and other instruments, for each substrate, so the digital proof, the cylinder proof and the printed result stay aligned.",
           },
           {
             title: ar ? "ما يُنجز في أم القيوين" : "What Umm Al Quwain runs",
             body: ar
-              ? "ما قبل الطباعة، تجهيز الأسطوانة، طلاء الكروم، والبروفة. هذا ما يوظّف له المصنع وما يصفه العملاء الذين طبعوا عنده."
-              : "Prepress, cylinder preparation, chrome plating and proofing. That is the work the plant hires for, and the work printers describe after using it.",
+              ? "ما قبل الطباعة، صناعة الأسطوانة، الحفر الكهروميكانيكي والليزر، طلاء النحاس والكروم، ومراقبة الجودة والبروفة قبل الشحن."
+              : "Prepress, cylinder making, electromechanical and laser engraving, copper and chrome plating, then quality control and a proof before dispatch.",
           },
           {
             title: ar ? "لمن نعمل" : "Who it is for",
             body: ar
-              ? "مطابع التغليف المرن، محولات أفلام الديكور، وطابعات النقل على النسيج في الإمارات والمنطقة."
-              : "Flexible-packaging printers, décor-film converters, and textile transfer printers in the UAE and the wider region.",
+              ? "مطابع التغليف المرن والدوائي والتبغ، والأعمال التي تحتاج نصاً دقيقاً أو نقشاً أمنياً أو نقشاً بارزاً."
+              : "Printers of flexible, pharmaceutical and tobacco packaging, and jobs that need microtext, a security pattern or an embossing roller.",
           },
         ].map((item) => (
           <div key={item.title}>
@@ -76,6 +80,40 @@ export function AboutPage() {
         ))}
       </section>
 
+      <section className="mt-16 border-t border-line pt-10">
+        <h2 className="font-display">{ar ? "الأسواق والعلامات" : "Markets and brands"}</h2>
+        <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">
+          {ar
+            ? "العلامات أدناه من عرض المصنع للعبوات التي حُفرت أسطواناتها. الدبابيس على خريطة الأسواق لا تعني عناوين العملاء."
+            : "The marks below are from the plant’s own presentation of packaging it has engraved cylinders for. Pins on the market map are not customer addresses."}
+        </p>
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {markets.map((market) => (
+            <li key={market.en} className="border border-line bg-white px-3 py-1 text-sm">
+              {market[lang]}
+            </li>
+          ))}
+        </ul>
+        <figure className="mt-8 border border-line bg-white p-3">
+          <Image
+            src="/images/uae/brands.webp"
+            alt={
+              ar
+                ? "علامات تغليف حُفرت أسطواناتها لدى ماستر برينتنغ بليت إندستري، ومنها المراعي ونادى وبروكتر وغامبل وكارفور وكلوروكس وأمريكانا وفالكون باك ويونيكاي"
+                : "Packaging brands Master Printing Plate Industry has engraved cylinders for, including Almarai, Nada, P&G, Carrefour, Clorox, Americana, Falcon Pack and Unikai"
+            }
+            width={2400}
+            height={1200}
+            className="h-auto w-full"
+          />
+          <figcaption className="mt-3 text-xs leading-5 text-muted">
+            {ar
+              ? "من بينها المراعي، نادى، بروكتر وغامبل، كارفور، كلوروكس، أمريكانا، فالكون باك، يونيكاي، ومزارع العين."
+              : "Among them: Almarai, Nada, P&G, Carrefour, Clorox, Americana, Falcon Pack, Unikai and Al Ain Farms."}
+          </figcaption>
+        </figure>
+      </section>
+
       <div className="mt-12 flex flex-wrap gap-3">
         <Link href="/plant" className="btn btn-ink">
           {ar ? "موقع المصنع" : "The Umm Al Quwain plant"}
@@ -83,6 +121,9 @@ export function AboutPage() {
         <Link href="/cylinders" className="btn btn-line">
           {ar ? "الأسطوانات" : "Cylinders"}
         </Link>
+        <a href={`mailto:${company.email}`} className="btn btn-line">
+          {company.email}
+        </a>
       </div>
     </article>
   );

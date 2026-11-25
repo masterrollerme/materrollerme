@@ -1,5 +1,6 @@
 "use client";
 
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { company } from "@/lib/company";
 import { useI18n } from "@/lib/i18n";
@@ -11,14 +12,20 @@ export function ContactPage() {
   return (
     <article className="mx-auto grid max-w-6xl gap-10 px-5 py-8 sm:px-8 sm:py-14 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <p className="eyebrow">{ar ? "تواصل" : "Contact"}</p>
-        <h1 className="font-display mt-3 text-5xl sm:text-6xl">
+        <Breadcrumbs
+          items={[
+            { href: "/", en: "Home", ar: "الرئيسية" },
+            { en: "Contact", ar: "تواصل" },
+          ]}
+        />
+        <p className="eyebrow mt-6">{ar ? "تواصل" : "Contact"}</p>
+        <h1 className="font-display mt-3">
           {ar ? "كلموا المصنع مباشرة." : "Talk to the plant directly."}
         </h1>
         <p className="mt-5 leading-7 text-muted">
           {ar
-            ? "واتساب أو اتصال. اذكروا نوع الأسطوانة والمطبعة والموعد. النموذج يفتح محادثة على رقم أم القيوين."
-            : "WhatsApp or a phone call. Name the cylinder, the press and the date. The form opens a chat on the Umm Al Quwain number."}
+            ? "واتساب أو اتصال أو بريد. اذكروا نوع الأسطوانة والمطبعة وطول التكرار. النموذج يفتح محادثة على رقم أم القيوين ولا يحفظ البيانات هنا."
+            : "WhatsApp, a phone call, or email. Name the cylinder, the press and the repeat. The form opens a chat on the Umm Al Quwain number and stores nothing here."}
         </p>
         <div className="mt-8 space-y-4 border-t border-line pt-6">
           <a className="block text-2xl" href={`tel:${company.phone}`} dir="ltr">
@@ -27,14 +34,27 @@ export function ContactPage() {
           <a className="block text-muted" href={`tel:${company.phoneAlt}`} dir="ltr">
             {company.phoneAltDisplay}
           </a>
+          <a className="block text-blue" href={`mailto:${company.email}`}>
+            {company.email}
+          </a>
           <a className="btn btn-yellow" href={company.whatsapp}>
             WhatsApp
           </a>
-          <p className="text-sm leading-6 text-muted">
-            {ar
-              ? "قطعة 950، شارع الاتحاد، بلوك 5، أم ديرا، الرافة، أم القيوين."
-              : "Plot 950, Al Itehaad Street, Block 5, Umm Deara, Al Raafah, Umm Al Quwain."}
-          </p>
+          <address className="text-sm leading-6 text-muted not-italic">
+            {ar ? (
+              <>
+                قطعة 950، شارع الاتحاد، بلوك 5، أم ديرا، الرافة، أم القيوين.
+                <br />
+                صندوق بريد {company.poBox}
+              </>
+            ) : (
+              <>
+                Plot 950, Al Itehaad Street, Block 5, Umm Deara, Al Raafah, Umm Al Quwain.
+                <br />
+                P.O. Box {company.poBox}
+              </>
+            )}
+          </address>
         </div>
       </div>
       <div className="border border-line bg-white p-5 sm:p-8 lg:col-span-7">

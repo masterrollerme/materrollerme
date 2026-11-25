@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { useI18n } from "@/lib/i18n";
 import { familyLabel, products, type Product } from "@/lib/products";
@@ -13,13 +14,14 @@ export function CylinderDetail({ product }: { product: Product }) {
 
   return (
     <article className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-14">
-      <p className="text-sm text-muted">
-        <Link href="/cylinders" className="text-blue">
-          {ar ? "الأسطوانات" : "Cylinders"}
-        </Link>
-        <span className="px-2">/</span>
-        {familyLabel[product.family][lang]}
-      </p>
+      <Breadcrumbs
+        items={[
+          { href: "/", en: "Home", ar: "الرئيسية" },
+          { href: "/cylinders", en: "Cylinders", ar: "الأسطوانات" },
+          { en: product.title.en, ar: product.title.ar },
+        ]}
+      />
+      <p className="mt-4 text-xs tracking-[0.14em] text-blue uppercase">{familyLabel[product.family][lang]}</p>
       <div className="mt-4 grid items-start gap-8 lg:grid-cols-2">
         <div>
           <h1 className="font-display text-5xl sm:text-6xl">{product.title[lang]}</h1>
@@ -42,7 +44,7 @@ export function CylinderDetail({ product }: { product: Product }) {
         <figure>
           <Image
             src={product.image}
-            alt={product.title[lang]}
+            alt={product.imageNote[lang]}
             width={product.width}
             height={product.height}
             className="h-auto w-full object-cover"
